@@ -1,0 +1,27 @@
+# Example:
+Alice and the mushroom:
+  actors:
+    Alice 
+    mushrooms (a lot)
+    ...
+  materials:
+    gelte something 
+    ...
+  description:
+    Alice walks through a shroom forest and ...
+  dialog:
+    Alice: How did I get here?
+    Shroom: Hussa !!!
+    ...
+
+
+intro:
+  actors:
+    some gentle unicorns:
+  materials:
+    title (text: "gentle recursion")
+    rainbow ?
+  description:
+    no idea...
+    
+    
