@@ -6,7 +6,7 @@
 #declare camera_look_at = <0,2,0>;
 #declare camera_offset_to_look_at = <-2,1,7>; 
  
-camera
+/*camera
 {
    location camera_look_at + camera_offset_to_look_at
    look_at camera_look_at
@@ -14,7 +14,7 @@ camera
    aperture 0.25  
    //blur_samples 25
    right x*image_width / image_height
-}
+}*/
 
                                            
 #macro lerp(p1, p2, amount)
