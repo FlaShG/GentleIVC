@@ -1,4 +1,16 @@
+ 
+#include "math.inc" 
+#include "shroom.inc"
+#include "colors.inc"
+#include "skies.inc"  
+#include "stars.inc"  
 
+
+#ifndef ( random )
+   #declare random = seed (1338);
+#end
+
+ 
 #declare i_x = -10;
 #while(i_x < 50) 
         #declare i_z = -10;
@@ -117,4 +129,35 @@ fog
    fog_offset 0
    fog_alt    0.42
    turbulence 1.8
-}   
+}      
+
+box
+{
+   <-200,0,-200>
+   <200,-5,200>
+ texture {
+  pigment {
+     granite
+     turbulence 6
+     color_map {
+       [0.000 color rgb <0.5, 0.5, 0.2>]
+       [0.25 color rgb <0.7, 1, 0.2>]
+       [0.5 color rgb <1, 0.4, 0.2>]
+       [0.75 color rgb <.5, 0.9, 0.2>]
+       [1 color rgb <0.3, 0.9, 0.2>]
+     }
+     scale 5
+   }
+   finish{specular .25 }
+           normal{
+             average normal_map{
+                 [0.0 bumps 150 scale 30]
+                 [0.2 dents 50 scale 12.5 turbulence .3]
+                 [0.6 bozo 20 rotate x*90
+ rotate y*45 scale 30 ]
+                 [1.0 wrinkles 25 scale 5 scallop_wave rotate z*30]
+                 }//end of normal map
+                 rotate z*15 turbulence .4
+               }//end of normal dec
+ }
+} 
