@@ -1,3 +1,5 @@
+#include "gentle.inc"
+
 #declare shroomtexture =
 texture
 {

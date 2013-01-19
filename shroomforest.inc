@@ -1,5 +1,6 @@
  
 #include "math.inc" 
+#include "rand.inc"
 #include "shroom.inc"
 #include "colors.inc"
 #include "skies.inc"  
