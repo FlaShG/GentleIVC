@@ -16,8 +16,9 @@ camera
 {
    location camera_look_at + camera_offset_to_look_at
    look_at camera_look_at
-   focal_point <58, 28-(clock*10), 10.7>
-   aperture 0.2 
+   //focal_point <58, 28-(clock*10), 10.7>
+   focal_point <58, 11, 10.7>
+   aperture 10 - (clock*9) 
    blur_samples 25
    right x*image_width / image_height
 }     
