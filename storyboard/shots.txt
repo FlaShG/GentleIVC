@@ -3,9 +3,9 @@
 
 ==== POV-RAY ====
 - falling down
-- *standing up
-- - *cat
-- - *looking around
+- standing up
+  ? cat
+  ? looking around
 - sliding down
 ? hitting the ground
 - running through forest
