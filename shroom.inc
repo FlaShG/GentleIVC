@@ -17,7 +17,7 @@ texture
    finish
    {
       diffuse 2
-      reflection 0.042
+      //reflection 0.042
    }
 }
 

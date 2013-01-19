@@ -16,7 +16,7 @@ camera
    look_at camera_look_at
    focal_point camera_look_at
    aperture 0.2 
-   /*blur_samples 50*/
+   blur_samples 50
    right x*image_width / image_height
 }     
 
@@ -50,16 +50,16 @@ object
    
    translate <0, 0, -0.2>
             
-   rotate y*(80+clock*100)
+   rotate y*(180+clock*400)
    
    translate <6, 0, 10.7>
    translate y * (7-clock*7)
 }
 
-light_source
+/*light_source
 {
    <-22,42,-42>*200 color rgb <0.757, 0.682, 0.612>*0.6    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
-} 
+}*/ 
    
 //====================scene====================
                            
