@@ -7,40 +7,26 @@
 #include "shroom.inc"
 
                                                       
-#declare camera_look_at = <60, 0, 10.7>;                                           
-#declare camera_offset_to_look_at = <0, 62-(clock*30), 0>;
+#declare camera_look_at = <58, 10, 10.7>;                                           
+//#declare camera_offset_to_look_at = <0, 62-(clock*30), 0>;
+//#declare camera_offset_to_look_at = <0, 5, 0>;
+#declare camera_offset_to_look_at = <0, 52-(clock*50), 0>;
       
 camera
 {
    location camera_look_at + camera_offset_to_look_at
    look_at camera_look_at
-   focal_point <60, 40-(clock*10), 10.7>
+   focal_point <58, 28-(clock*10), 10.7>
    aperture 0.2 
    blur_samples 25
    right x*image_width / image_height
 }     
 
-/*sphere
-{
-   camera_look_at
-   0.2              
-   texture
-   {
-      pigment
-      {
-         color Yellow
-      }
-      finish
-      {
-         ambient 1
-      } 
-   }
-}*/
        
 object
 {
-   shroom(100, 0, 1.2, shroomtexture, false) 
-   translate <60, 0, 10.7>    
+   shroom(35, 0, 1.2, shroomtexture, false) 
+   translate <58, 0, 10.7>    
 }
 
 /*light_source
