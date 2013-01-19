@@ -8,10 +8,8 @@
 
                                                       
 #declare camera_look_at = <46, 11, 20.4>;                                           
-//#declare camera_offset_to_look_at = <0, 62-(clock*30), 0>;
-//#declare camera_offset_to_look_at = <0, 5, 0>;
-#declare camera_offset_to_look_at = <0, 52-(clock*50), -20+(clock*19)>;   
-      
+#declare camera_offset_to_look_at = <0, 52-(clock*50), -20+(clock*19)>;    
+                                                                       
 camera
 {
    location camera_look_at + camera_offset_to_look_at
@@ -19,6 +17,7 @@ camera
    //focal_point <58, 28-(clock*10), 20.7>
    focal_point <46, 11, 20.7>
    aperture 10 - (clock*9) 
+   //aperture 1
    blur_samples 25
    right x*image_width / image_height
 }
