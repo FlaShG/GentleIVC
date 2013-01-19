@@ -174,16 +174,14 @@ union // tea + cup
    #declare steam =
    cylinder
    {
-      <0,0,0>,
-      <0,3.5,0>,
-      1.5  // increased from 1 to 1.5, because of the turbulent pattern !!!
+      <0,0,0>, <0,3.5,0>, 1.5  // increased from 1 to 1.5, because of the turbulent pattern !!!
       pigment {rgbt 1}
       hollow  
-
+   
       interior
       { //---------------------
          media
-         {  
+         {
             method 3
             emission 0.6
             scattering
@@ -195,27 +193,36 @@ union // tea + cup
                // how fast the scattering media absorbs light 
                // useful i.e. when the media absorbs too much light
                // eccentricity i.e. -0.6 ~ +0.6 (if type>1 )
-            } // end scattering   
+            }  // end scattering   
+
             #declare ex = x;
             #declare ey = y;
             #declare ez = z;   
-            #declare calc_m = function(a)
-            {  1*sin(1*(a+clock)) }
-                
+            #declare calc_m_x = function(a)
+                 {  1*sin(2.5*(a-clock)) }
+            #declare calc_m_z = function(a)
+                 //{  1*cos(8*(a-clock)) }
+                 {  0 }
+            #declare calc_var = function(a)
+                 { 20 }
+            #declare calc_max = function(a)
+                  { 1-2*y/3.7 }      
+                   
             density
             {  
                function
                {   
-                  exp(-20*(calc_m(y)*calc_m(y) - x*x -z*z))
-                  //min(4.2*pow(1-(y+clock)/3.7, 2)*exp(-2*(x*x + z*z)), 1)
+                  //clip(1*exp(-2*((calc_m(y)-x)*(calc_m(y)-x) + z*z)), 0, 1)
+                  clip(calc_max(y)*exp(-calc_var(y)*((calc_m_x(y)-x)*(calc_m_x(y)-x) + (calc_m_z(y)-z)*(calc_m_z(y)-z))), 0, 1)
+                  //min(4.2*pow(1-(y+clock)/3.7, 2)*exp(-2*(x*x + z*z)), 1)     
                   //clock+5*exp(-x*x - 0.1*y*y - z*z)
                }
                //turbulence 0.85
                //turbulence 0
-              
+                 
                //translate y*clock
             }  
-           
+              
             samples 3,3     // 3,3 for adaptive sampling
             intervals 3     //  
             confidence .9   //  
