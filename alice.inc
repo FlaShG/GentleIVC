@@ -1,4 +1,4 @@
-#include "gentle.inc" 
+#include "gentle.inc"
 #include "colors.inc"   
 #include "skies.inc"  
 #include "colorize_intersection.inc"
@@ -83,11 +83,10 @@
 #macro alice_arm(start, angle1, angle2, mirrored)
     angled_arm(start, 1.1, 0.8, angle1, angle2, mirrored, texture{alice_dress_color finish{diffuse 2}}, texture{alice_skin_color finish{diffuse 2}})
     //angled_arm(start, 1, 0.9, angle1, angle2, mirrored, alice_dress_color, alice_skin_color)
-#end
-
+#end   
 
          
-#declare alice = 
+#declare alice_body = 
 merge
 {
    colorize_intersection
@@ -240,6 +239,40 @@ merge
       alice_skin_color
    )*/
    
+}  
+
+#macro alice(r_1, r_2, l_1, l_2)
+union
+{
+   object{ alice_body }
+     
+   alice_arm
+   (
+      <0.2,2,0>,
+      r_1,
+      r_2,
+      false
+   )
+   
+   alice_arm
+   (
+      <-0.2,2,0>,
+      l_1,
+      l_2,
+      true
+   )
+}
+#end
+ 
+ 
+#declare ready_alice = alice(z*-50, y*-100, z*-50, y*-100);
+   
+/*
+#declare alice =
+union
+{
+   object{ alice_body }
+     
    alice_arm
    (
       <0.2,2,0>,
@@ -256,7 +289,7 @@ merge
       true
    )
 }
-
+*/
 /*object
 {
    alice

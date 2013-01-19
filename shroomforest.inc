@@ -26,7 +26,7 @@
         
         #declare i_x = i_x+1;
 #end 
-
+    /*
 #declare i_x = 50;
 #while(i_x < 100) 
         #declare i_z = 50;
@@ -73,7 +73,7 @@
         #end
         
         #declare i_x = i_x+1;
-#end
+#end  */
                   
 light_source
 {
