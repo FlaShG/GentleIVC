@@ -242,6 +242,66 @@ union // tea + cup
    //rotate z*20
    //translate 5*y
   
+}           
+
+#declare saucer =
+difference
+{
+   difference
+   {
+      sphere
+      {
+         y 1
+      }
+      sphere
+      {
+         y*1.5 1
+      }
+      
+      scale <1.1, 0.15, 1.1>
+   }
+   
+   cylinder
+   {
+      y*0.05
+      y
+      0.48
+   }
+   
+   texture
+   {
+      porcelain
+      
+      pigment
+      {
+         image_map
+         {
+            jpeg "saucer.jpg"
+            map_type 0
+            interpolate 2
+         }   
+         rotate x*90
+         scale 2
+         translate .98
+         scale 1.2
+      }
+   }
+   
+   scale 0.82
+}
+
+#declare teacup_on_saucer =
+merge
+{                    
+   object
+   {
+      saucer
+   }
+   object
+   {
+      teacup
+      translate y*0.06
+   }
 }
 
 
