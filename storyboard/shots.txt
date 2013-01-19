@@ -1,12 +1,14 @@
 
-
+- einstellung
+? optional
+# fertig
 
 ==== POV-RAY ====
-- falling down
+# falling down
 - standing up
   ? cat
   ? looking around
-- sliding down
+# sliding down
 ? hitting the ground
 - running through forest
 ? close-up alice ("huh?")
