@@ -2,11 +2,11 @@
 
 #include "table.inc"                                                                
 #include "tea.inc"
+#include "spoon.inc"
 
-
-#declare camera_look_at = <0,1,0>;                                           
-#declare camera_offset_to_look_at = <1-2*clock,.5-clock, 1>*.55;
-//#declare camera_offset_to_look_at = <0,1, 0>;
+#declare camera_look_at = <1,1,0>;                                           
+#declare camera_offset_to_look_at = <-.5,2, 1>*.25;
+//#declare camera_offset_to_look_at = <.5,.5, 1>*.5;
                                                                 
 camera
 {
@@ -31,12 +31,20 @@ object
 
 
 //teacups
-object
-{
-   teacup_on_saucer
+object{
+   teacup_and_spoon_on_saucer
    scale 0.15
    translate y*1
-}
+} 
+
+object{
+   spoon_in_teacup_on_saucer 
+   scale .15
+   translate x+y
+}    
+
+
+
 
 
 // mirrors
@@ -59,4 +67,4 @@ box {
    no_reflection  
    pigment{ color White }  
    finish { reflection 0.1 ambient 0.05 diffuse 0 }    
-}
+}     
