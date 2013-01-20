@@ -168,7 +168,7 @@ union // tea + cup
    }                                            
 
 
-   #declare steam =
+   /*#declare steam =
    cylinder
    {
       <0,0,0>, <0,3.5,0>, 1.3  // increased from 1 to 1.5, because of the turbulent pattern !!!
@@ -231,7 +231,7 @@ union // tea + cup
       scale 4.5 
       rotate<0,0,0>
       translate < 0, 7 ,0> 
-   } //------------------ end of "Rauch" 
+   } //------------------ end of "Rauch"*/ 
 
 
    //steam
