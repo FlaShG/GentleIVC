@@ -6,7 +6,10 @@
 #include "golds.inc"
 #include "glass.inc"
 #include "math.inc"
-
+#include "spoon.inc"
+#include "rand.inc"
+          
+#declare shifting_seed = seed(42);
 
       
 #declare porcelain =
@@ -35,7 +38,8 @@ sor
    <7.5,  11.5>,
    <8.5,  15>
     
-   sturm
+   sturm 
+   
 }
    
    
@@ -59,7 +63,7 @@ sor
 #declare teacup =
 union // tea + cup
 {
-   merge // teacup
+   union // teacup
    { 
       difference
       {
@@ -116,7 +120,7 @@ union // tea + cup
    } // teacup end
 
    #declare tea_in_teacup =           
-   merge
+   union
    {
       // tea :)     
       difference
@@ -158,23 +162,16 @@ union // tea + cup
       object
       {
          tea_in_teacup
-         normal { ripples 2.35 scale 0.325 turbulence 0.5 translate<-1.55,0,0> rotate<0,-50,0>} 
+         //normal { ripples 2.35 scale 0.325 turbulence 0.5 translate<-1.55,0,0> rotate<0,-50,0>}  
+         normal { ripples 1 scale 0.325 turbulence 0.5 translate<-1.55,.1*clock,0> rotate<0,-50,0>} 
       }         
-   }     
-           
-   cylinder
-   {
-      y*3.5
-      y*15 - x*7
-      1
-      pigment {color Green}
-   }                                                           
+   }                                            
 
 
    #declare steam =
    cylinder
    {
-      <0,0,0>, <0,3.5,0>, 1.5  // increased from 1 to 1.5, because of the turbulent pattern !!!
+      <0,0,0>, <0,3.5,0>, 1.3  // increased from 1 to 1.5, because of the turbulent pattern !!!
       pigment {rgbt 1}
       hollow  
    
@@ -197,9 +194,12 @@ union // tea + cup
 
             #declare ex = x;
             #declare ey = y;
-            #declare ez = z;   
+            #declare ez = z;
+            #declare herp = rand(shifting_seed);   
             #declare calc_m_x = function(a)
-                 {  1*sin(2.5*(a-clock)) }
+                 { herp +  1*sin(2.5*(a-clock)
+                 
+                 ) }
             #declare calc_m_z = function(a)
                  //{  1*cos(8*(a-clock)) }
                  {  0 }
@@ -302,6 +302,47 @@ merge
       teacup
       translate y*0.06
    }
+}  
+
+
+#declare teacup_and_spoon_on_saucer =
+merge
+{                    
+   object
+   {
+      saucer
+   }
+   object
+   {
+      teacup
+      translate y*0.06
+   }
+   
+   object{
+      spoon
+      scale .225
+      rotate x*-81+y*50
+      translate x*-.7+y*.23+z*.1
+   }
+}  
+
+#declare spoon_in_teacup_on_saucer =
+union
+{                    
+   object
+   {
+      saucer
+   }
+   object
+   {
+      teacup
+      translate y*0.06
+   }
+   
+   object{
+      spoon
+      scale .225
+      rotate x*240+y*180
+      translate x*-.2+y*.8
+   }   
 }
-
-
