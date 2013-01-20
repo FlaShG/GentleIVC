@@ -1,3 +1,5 @@
+#include "nice_functions.inc"
+
  
 #include "math.inc" 
 #include "rand.inc"
@@ -10,77 +12,61 @@
 #ifndef ( random )
    #declare random = seed (1338);
 #end
+            
+               
+               
+               
+               
+#macro transform_lookatme(myPosition)
+   transform
+   {
+      rotate y*rand(random)*360*0
+      
+      #local shroom_look_pos = <i_x * 2 + rand(random) - 0.5, 0, i_z * 2 + rand(random) - 0.5>;
+      RotateTo_Transform(<0,0,1>, shroom_look_pos, myPosition, y)
+      translate shroom_look_pos
+   
+   
+   }
+#end            
 
- 
+#macro transform_normalshroom()
+   transform
+   {
+      rotate y*rand(random)*360
+      translate <i_x * 2 + rand(random) - 0.5, 0, i_z * 2 + rand(random) - 0.5>
+   
+   }
+#end            
+                                        
+
+#macro one_shroom_in_forest(looking, myPosition)
+   object
+   {  
+      shroom(clip((Rand_Gamma(2,1,random)*5),2,30), rand(random) * 0.3, 1+(rand(random)*0.3), shroomtexture, true)
+      
+      #if(looking)
+         transform_lookatme(myPosition)                   
+      #else
+         transform_normalshroom()
+      #end
+   }
+#end
+
+                            
+                            
+#macro looking_shroom_forest(looking, myPosition) 
 #declare i_x = -10;
 #while(i_x < 50) 
         #declare i_z = -10;
         #while(i_z < 50)
-                object
-                {  
-                   shroom(clip((Rand_Gamma(2,1,random)*5),2,30), rand(random) * 0.3, 1+(rand(random)*0.3), shroomtexture, true)
-                   rotate y*rand(random)*360
-                   translate<i_x * 2 + rand(random) - 0.5, 0, i_z * 2 + rand(random) - 0.5>
-                } 
-                #declare i_z = i_z+1;         
-        #end
-        
-        #declare i_x = i_x+1;
-#end 
-
-
-#macro more_shrooms()
-
-#declare i_x = 50;
-#while(i_x < 100) 
-        #declare i_z = 50;
-        #while(i_z < 100)
-                object
-                {  
-                   shroom(clip((Rand_Gamma(2,1,random)*5),2,30), rand(random) * 0.3, 1+(rand(random)*0.3), shroomtexture, true)
-                   rotate y*rand(random)*360
-                   translate<i_x * 2 + rand(random) - 0.5, 0, i_z * 2 + rand(random) - 0.5>
-                } 
+                one_shroom_in_forest(looking, myPosition) 
                 #declare i_z = i_z+1;         
         #end
         
         #declare i_x = i_x+1;
 #end
 
-#declare i_x = -10;
-#while(i_x < 50) 
-        #declare i_z = 50;
-        #while(i_z < 100)
-                object
-                {  
-                   shroom(clip((Rand_Gamma(2,1,random)*5),2,30), rand(random) * 0.3, 1+(rand(random)*0.3), shroomtexture, true)
-                   rotate y*rand(random)*360
-                   translate<i_x * 2 + rand(random) - 0.5, 0, i_z * 2 + rand(random) - 0.5>
-                } 
-                #declare i_z = i_z+1;         
-        #end
-        
-        #declare i_x = i_x+1;
-#end 
-
-#declare i_x = 50;
-#while(i_x < 100) 
-        #declare i_z = -10;
-        #while(i_z < 50)
-                object
-                {  
-                   shroom(clip((Rand_Gamma(2,1,random)*5),2,30), rand(random) * 0.3, 1+(rand(random)*0.3), shroomtexture, true)
-                   rotate y*rand(random)*360
-                   translate<i_x * 2 + rand(random) - 0.5, 0, i_z * 2 + rand(random) - 0.5>
-                } 
-                #declare i_z = i_z+1;         
-        #end
-        
-        #declare i_x = i_x+1;
-#end
-
-#end
-                  
 light_source
 {
    <-22,42,-42>*200 color rgb <0.757, 0.682, 0.612>*0.6    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
@@ -168,3 +154,53 @@ box
       }*/
    } // end of texture
 } 
+#end
+
+#macro more_looking_shroom_forest(looking, myPosition)
+union
+{
+#declare i_x = 50;
+#while(i_x < 100) 
+        #declare i_z = 50;
+        #while(i_z < 100)                                
+                one_shroom_in_forest(looking, myPosition) 
+                #declare i_z = i_z+1;         
+        #end
+        
+        #declare i_x = i_x+1;
+#end
+
+#declare i_x = -10;
+#while(i_x < 50) 
+        #declare i_z = 50;
+        #while(i_z < 100)
+                one_shroom_in_forest(looking, myPosition) 
+                #declare i_z = i_z+1;         
+        #end
+        
+        #declare i_x = i_x+1;
+#end 
+
+
+#declare i_x = 50;
+#while(i_x < 100) 
+        #declare i_z = -10;
+        #while(i_z < 50)
+                one_shroom_in_forest(looking, myPosition) 
+                #declare i_z = i_z+1;         
+        #end
+        
+        #declare i_x = i_x+1;
+#end
+}
+#end
+
+                  
+
+#macro some_shrooms()                      looking_shroom_forest(off, 0)           #end
+#macro some_looking_shrooms(myPosition)    looking_shroom_forest(on, myPosition)   #end
+
+
+#macro more_shrooms()                   more_looking_shroom_forest(off, 0)         #end
+#macro more_looking_shrooms(myPosition) more_looking_shroom_forest(on, myPosition) #end
+ 

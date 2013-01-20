@@ -78,3 +78,6 @@ light_source
 //====================scene====================
                            
 #include "shroomforest.inc"
+
+//some_shooms()
+some_looking_shrooms(<31, 0, 15.4 + clock*12>)

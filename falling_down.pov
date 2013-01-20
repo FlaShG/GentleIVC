@@ -36,3 +36,4 @@ object
 //====================scene====================
                            
 #include "shroomforest.inc"
+some_shrooms()
