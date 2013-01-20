@@ -6,6 +6,8 @@
 #include "alice.inc"
 #include "chessir.inc"
 
+#include "math.inc"
+
                                                       
 #declare camera_look_at = <31, 0.5, 15.4 + clock*12>;                                           
 #declare camera_offset_to_look_at = <0, 0.2, 2>;    
@@ -49,19 +51,25 @@ object
 
 object
 {
-   //chessir_cat(5)
-   sphere
+   chessir_cat(5, clip(clock * 3, 0, 1))
+   /*sphere
    {
       0 1
-   }
+      pigment{ color White }  
+      scale y*0.6
+   }*/   
+   
    scale 0.3
-   translate <31.4, 1, 15.4 + clock*12>
+   
+   rotate z * cos(clock * 4) * 20
+   
+   translate <31.5 - (1-((cos(clock * 4)+1)/2)), 0.6 + cos(clock * 8)*0.2, 15 + clock*12>
 }
 
 
 light_source
 {
-   <-22,42,42>*200 color rgb <0.757, 0.682, 0.612>*0.05 shadowless    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
+   <-22,42,42>*200 color rgb <0.757, 0.682, 0.612>*0.5 shadowless    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
 } 
    
 //====================scene====================
