@@ -57,7 +57,11 @@ colorize_intersection
            1.4
        }    
        
-       pigment{ color rgb 0.2 }
+       texture
+       {
+         pigment{ color rgb 0.1 }
+         finish{ specular 0.1 }
+       }
    }
    
    cylinder
@@ -281,7 +285,11 @@ colorize_intersection
       {
          pigment
          {
-            color rgb 0.2
+            color rgb 0.1
+         }
+         finish
+         {
+            specular 0.1
          }
       }
    }
