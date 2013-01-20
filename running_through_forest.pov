@@ -8,8 +8,11 @@
 
 #include "math.inc"
 
+                   
+//#declare alice_position_z = 15.4 + clock*12;
+#declare alice_position_z = 15.4 + clock*16;
                                                       
-#declare camera_look_at = <31, 0.5, 15.4 + clock*12>;                                           
+#declare camera_look_at = <31, 0.5, alice_position_z>;                                           
 #declare camera_offset_to_look_at = <0, 0.2, 2>;    
                                                                        
 camera
@@ -23,7 +26,7 @@ camera
 }
  
  
-#declare schritte = 20;         
+#declare schritte = 20+18;         
 
 #declare sinus = sin(clock * schritte);
 #declare sinus1 = (sinus+1) / 2;
@@ -45,7 +48,7 @@ object
    scale 0.2
    scale y * (1+sin(clock * schritte * 2) * 0.02)
    scale z * (1+cos(clock * schritte * 2) * 0.02)
-   translate <31, 0, 15.4 + clock*12>    
+   translate <31, 0, alice_position_z>    
 }     
 
 
@@ -57,13 +60,13 @@ object
       0 1
       pigment{ color White }  
       scale y*0.6
-   } */  
+   }*/ 
    
    scale 0.3
    
    rotate z * cos(clock * 4) * 20
    
-   translate <31.5 - (1-((cos(clock * 4)+1)/2)), 0.6 + cos(clock * 8)*0.2, 15 + clock*12>
+   translate <31.5 - (1-((cos(clock * 4)+1)/2)), 0.6 + cos(clock * 8)*0.2, alice_position_z - 0.4>
 }
 
 
@@ -77,4 +80,4 @@ light_source
 #include "shroomforest.inc"
 
 //some_shooms()
-some_looking_shrooms(<31, 0, 15.4 + clock*12>)
+some_looking_shrooms(<31, 0, alice_position_z>)
