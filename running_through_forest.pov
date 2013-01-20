@@ -51,13 +51,13 @@ object
 
 object
 {
-   chessir_cat(5, clip(clock * 3, 0, 1))
-   /*sphere
+   //chessir_cat(5, clip(clock * 3, 0, 1))
+   sphere
    {
       0 1
       pigment{ color White }  
       scale y*0.6
-   }*/   
+   }   
    
    scale 0.3
    
@@ -74,4 +74,4 @@ light_source
    
 //====================scene====================
                            
-//#include "shroomforest.inc"
+#include "shroomforest.inc"
