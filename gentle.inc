@@ -118,14 +118,14 @@ blob
       {
          object{half_stache}
          rotate<0,0,talk>
-         translate<0.2,0,0>
+         translate<0.2,.001*talk,0>
       }
       object
       {
          object{half_stache}
          rotate<0,0,talk>  
          scale<-1,1,1>      
-         translate<-0.2,0,0>
+         translate<-0.2,.001*talk,0>
       }   
       
       scale 0.8
