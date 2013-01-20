@@ -22,14 +22,14 @@ camera
 
 #macro chessir_cat(seconds)
 
-declare cat_skull=
+#declare cat_skull=
 sphere {
    0, .65    
    scale x*1.4+z*0.5
 }                 
 
    
-declare cat_ear =
+#declare cat_ear =
 difference{
 prism {
     conic_sweep
@@ -86,13 +86,13 @@ merge{
       0.15 - 0.125*ctr   
       scale 0.5
    }
-   #declare ctr = ctr + 0.05; //was 0.005
+   #declare ctr = ctr + 0.01; //was 0.005
 #end  
 }
 
-pigment{ color rgbt 1 }
+pigment{ color rgb 1 }
 
-hollow
+/*hollow
 
 interior{
    media{
@@ -108,7 +108,7 @@ interior{
             }
          }
    }
-}   
+}*/   
 
 #end
 
@@ -291,7 +291,7 @@ object
                [1 rgb 1]
             }
          }
-        translate -z*(clock/seconds)clock*.1
+        translate -z*(clock*(seconds))*clock*.2
      }
    }
    
@@ -341,7 +341,7 @@ sphere{
    
 #declare cat_eye3 =   
 light_source {
-0, <0,.5,0>
+0, <0,.3,0>
 fade_distance .6
 fade_power 3
 looks_like
@@ -375,7 +375,7 @@ interior
         emission 1
 	absorption 2 
 	
-	scattering{1,10}
+	scattering{1,42}
 	
 	density
 	{
@@ -405,7 +405,7 @@ interior
 	}
      
       scale 1
-      translate -(clock/seconds)*z*.1
+      translate -(clock*(seconds))*z*.2
      }
    }  
    
@@ -424,7 +424,7 @@ interior
 }
 }  
    
-declare cat_head= 
+#declare cat_head= 
 union{
 union{
 object{cat_skull}                             
@@ -440,10 +440,10 @@ pigment{ color rgbt 1 }
    
    media
    {
-      absorption .25
+      absorption 5
       density
       {
-         spherical
+         granite
          color_map
          {
             [0 rgb 1]
@@ -455,8 +455,7 @@ pigment{ color rgbt 1 }
 
    media
      {
-        emission 1
-	absorption 42
+        absorption 42
 	
 	density
 	{
@@ -472,13 +471,13 @@ pigment{ color rgbt 1 }
 	}
      
       scale 1
-      translate -z*(clock/seconds)*.1
+      translate -z*(clock*(seconds))*.2
      }
    }  
    
 }
 
-object{ chessir_mouth rotate x*15 scale .35 translate y*-.6+z*.18}
+object{ chessir_mouth rotate x*15 scale .35 translate y*-.45+z*.18}
 
 object{cat_eye3 scale .4 rotate y*20 translate <.35,0.25,.25> }  
 object{cat_eye3 scale .4 rotate y*20 translate <.35,0.25,.25> scale x*-1 }

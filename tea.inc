@@ -283,7 +283,7 @@ difference
          rotate x*90
          scale 2
          translate .98
-         scale 1.2
+         scale 1.15
       }
    }
    

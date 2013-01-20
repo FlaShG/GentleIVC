@@ -5,7 +5,7 @@
 
 
 #declare camera_look_at = <0,1,0>;                                           
-#declare camera_offset_to_look_at = <1-2*clock,.5-clock, 1>*.7;
+#declare camera_offset_to_look_at = <1-2*clock,.5-clock, 1>*.55;
 //#declare camera_offset_to_look_at = <0,1, 0>;
                                                                 
 camera

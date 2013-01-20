@@ -150,5 +150,16 @@ box
          rotate x*90
          scale 2
       } //  end of pigment
+      
+      /*normal
+      {
+         bump_map
+         {
+            jpeg "grasbump.jpg"
+            bump_size 5.0
+         }
+         rotate x*90
+         scale 2
+      }*/
    } // end of texture
 } 
