@@ -10,13 +10,13 @@
   ? looking around
 # sliding down
 ? hitting the ground
-- running through forest
+# running through forest
 ? close-up alice ("huh?")
 - meeting gentleman
 - talking to gentleman
 - gentleman tosses clock
 
-- alice looks around in clock
+# alice looks around in clock
 - seeing the tea party setup
 - sitting down
 - gentleman talking

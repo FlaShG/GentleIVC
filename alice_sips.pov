@@ -3,16 +3,26 @@
 #include "table.inc"                                                                
 #include "tea.inc"
 #include "spoon.inc"
-//#include "pocket_watch.inc"
+#include "pocket_watch.inc"
+#include "utah_teapot.inc"
 
 #include "alice.inc"
 
-#declare camera_look_at = <2,1.2,0>;                                           
-#declare camera_offset_to_look_at = <-3 , 1.5 , -1> * .4;
+#declare camera_look_at = <2,1.2,0>+<-5,0,-10>;                                           
+#declare camera_offset_to_look_at = <-3 , 1 , -1> * .4;
+  
+//#declare camera_offset_to_look_at = <-7 , 1 , -1> * .4;
 
+//#declare camera_look_at = <2,1.2,0>;
+//#declare camera_offset_to_look_at = <10 , 1 , 10> * .1;
 
-//#declare camera_look_at = <2,1,2>;
-//#declare camera_offset_to_look_at = <-1 , 1 , 3> * .4; 
+//WICHTIG!!!
+#declare animation_duration = 5;
+#declare sip_duration = 2;
+
+#declare sip_factor = animation_duration / sip_duration;
+#declare sip_clock = clip(clock * sip_factor, 0, 1);
+
                                                                 
 camera
 {
@@ -35,67 +45,84 @@ light_source
 } 
 
 
-
-
-
-
 object
 {
-   tea_table
-   translate<0,0,0>
-}    
-
-
-//teacups
-/*object{
-   teacup_and_spoon_on_saucer
-   scale 0.15
-   translate y
-} */
-
-object{
-   //spoon_in_teacup_on_saucer 
-   spoon_on_saucer
-   scale .15
-   translate <1.8, 1, 0>
-}    
-
-object
-{
-   teacup
-   scale .12   
-   rotate y*-80
-   
-   translate <-0.2, 0, 0>
-   
-   rotate z*-52*clock
-   
-   translate <2.5-0.45-((1-clock)*0.05), 1, 0>
+   pocket_watch(7, 20, 48+floor(clock*animation_duration))
+   scale 30
+   translate y*-1.64
 }
 
-#declare base_arm_l1 = y*-48 + z*-5;
-#declare base_arm_l2 = y*-70 + z*-15;
-#declare base_arm_r1 = y*-20 + z*-30;
-#declare base_arm_r2 = y*-40 + z*170;
 
-object
+merge
 {
-   //ready_alice
-   alice(base_arm_l1 + y*8*clock + z*5*clock, base_arm_l2 + y*-50*clock + z*-20*clock,
-         base_arm_r1, base_arm_r2)
+   object
+   {
+      tea_table
+      translate<0,0,0>
+   }
    
-   scale 0.3
-   rotate y*-90
-   translate x*2.3 + y*0.5
+   //teacups
+   /*object{
+      teacup_and_spoon_on_saucer
+      scale 0.15
+      translate y
+   } */
+   
+   object{
+      //spoon_in_teacup_on_saucer 
+      spoon_on_saucer
+      scale .15
+      translate <1.8, 1, 0>
+   }    
+   
+   object
+   {
+      teacup
+      scale .12   
+      rotate y*-80
+      
+      translate <-0.2, 0, 0>
+      
+      rotate z*-52*sip_clock
+      
+      translate <2.5-0.45-((1-sip_clock)*0.05), 1, 0>
+   }
+   
+   #declare base_arm_l1 = y*-48 + z*-5;
+   #declare base_arm_l2 = y*-70 + z*-15;
+   #declare base_arm_r1 = y*-20 + z*-30;
+   #declare base_arm_r2 = y*-40 + z*170;
+   
+   object
+   {
+      //ready_alice
+      alice(base_arm_l1 + y*8*sip_clock + z*5*sip_clock,
+            base_arm_l2 + y*-50*sip_clock + z*-20*sip_clock,
+            base_arm_r1, base_arm_r2)
+      
+      scale 0.3
+      rotate y*-90
+      translate x*2.3 + y*0.5
+   }
+   
+   object
+   {
+      chair
+      rotate y*-90
+      translate <2.3 , 0.0 , 0>
+   }
+   
+   object
+   {
+      utah_teapot
+      scale .09  
+      
+      rotate y*49
+      translate <1.3,1,0.4>
+   } 
+   
+   translate <-5,0,-10>
 }
-
-object
-{
-   chair
-   rotate y*-90
-   translate <2.3 , 0.0 , 0>
-}
-
 
 
 

@@ -13,8 +13,8 @@
 #include "shapes.inc"
 
 
-#include "alice.inc"
-#include "tea.inc"
+//#include "alice.inc"
+//#include "tea.inc"
 
 /*                                                      
 #declare camera_look_at = <3, 2, 2+10*clock>;                                           
@@ -431,7 +431,7 @@ merge
       scale 0.3
       
       translate x*3 + y * torusHight * torusFaceScaleMax * 30
-    }
+    }                                             
   */
 
             
