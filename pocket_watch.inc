@@ -16,7 +16,7 @@
 #include "alice.inc"
 #include "tea.inc"
 
-                                                      
+/*                                                      
 #declare camera_look_at = <3, 2, 2+10*clock>;                                           
 #declare camera_offset_to_look_at = <0, 1.5, 20.0001 > * 0.1;
       
@@ -28,7 +28,7 @@ camera
    //aperture 0.25  
    //blur_samples 25
    right x*image_width / image_height
-}
+} */
 //==================current====================
 
       
@@ -226,11 +226,10 @@ merge
                        
       texture 
       {
-         //porcelain 
-         pigment { color White*0.02 } //  color Gray50
+         pigment { color White*0.02 } 
          //normal { bumps 0.5 scale 0.05 }
          finish { phong 0.5 reflection 0.02 }
-      }  // end of texture 
+      }
       
          
    }
@@ -240,7 +239,8 @@ merge
      test(bars, torusRadius - torusHight*2.0, <1, 0.5, 1>*0.6, 0 , on) 
                  
      rotate -x*90
-     translate torusFaceScaleMax * 1.01 * torusHight * y
+     scale y*1.2
+     translate torusFaceScaleMax * 1.1 * torusHight * y
    }
    merge
    {
@@ -284,7 +284,6 @@ merge
             0.05
             
             1                  
-            //pigment {color Green}
         }
         cylinder
         {
@@ -293,21 +292,19 @@ merge
             0.04
             
             1                  
-            //pigment {color Red}
         }
          
         sturm       
-        //texture { T_Gold_1B }
     }
     torus { 0.1, 0.02 }
     scale y*0.4
     
    texture 
    { 
-      pigment{ color rgb< 0.25, 0.0, 0.0> } //   very dark red  
+      pigment{ color rgb< 0.25, 0.0, 0.0> } 
       normal { bumps 0.5 scale 0.05 }
       finish { phong 1 reflection 0.01}
-   } // end of texture 
+   } 
    
     
 }                       
@@ -326,7 +323,6 @@ merge
             0.06
             
             1                  
-            //pigment {color Green}
         }
         cylinder
         {
@@ -335,11 +331,9 @@ merge
             0.05
             
             1                  
-            //pigment {color Red}
         }
          
         sturm       
-        //texture { T_Gold_1B }
     }
     //torus { 0.1, 0.02 }
     scale y*0.4
@@ -363,7 +357,6 @@ merge
             0.06
             
             1                  
-            //pigment {color Green}
         }
         cylinder
         {
@@ -372,11 +365,9 @@ merge
             0.05
             
             1                  
-            //pigment {color Red}
         }
          
         sturm       
-        //texture { T_Gold_1B }
     }
     //torus { 0.1, 0.02 }
     scale y*0.4 + x*0.9
@@ -404,7 +395,6 @@ merge
     #local angle_second = 360  * frac_second;
     
     
-    merge{
     merge
     {                                           
         difference
@@ -420,9 +410,21 @@ merge
         
         clockGlass
         
-        scale 30
+        //scale 30
     }    
-    object
+
+
+#end
+
+//pocket_watch(11, 45, clock*25)
+                      
+//light_source
+//{
+//   <42,42,-42> 1.0
+//}   
+
+
+/*    object
     {
       ready_alice
       
@@ -430,20 +432,10 @@ merge
       
       translate x*3 + y * torusHight * torusFaceScaleMax * 30
     }
-    //box{ <-2,-2,0.9> , 11 scale x*100 pigment {color Green} }
-    }
-#end
-
-pocket_watch(11, 45, clock*25)
-                      
-light_source
-{
-   <42,42,-42> 1.0
-}   
-
+  */
 
             
-sky_sphere{ S_Cloud5 }          
+//sky_sphere{ S_Cloud5 }          
 
 
 
