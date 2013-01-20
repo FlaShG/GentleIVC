@@ -90,7 +90,7 @@ merge{
 #end  
 }
 
-pigment{ color rgb 1*sqrt((intensity)) }
+pigment{ color rgbt <1,1,1,1-(intensity)*sqrt((intensity))> }
 
 /*hollow
 
@@ -190,7 +190,7 @@ difference
      y*3.5, 3.25
    }  
    
-   pigment{color rgbt .9}
+   pigment{color rgbf .9*intensity}
 }      
 
 difference
@@ -216,7 +216,7 @@ difference
      y*5.1, 4
    } 
    
-   pigment{color rgbt .9}
+   pigment{color rgbf .9*intensity}
 }  
 
 pigment{ color rgbt 1 }    
