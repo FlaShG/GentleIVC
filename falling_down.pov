@@ -1,4 +1,3 @@
-
 #include "rand.inc"
 #declare random = seed (1338);  
 #declare gamma_random = Rand_Gamma(1,1,random); //muss hier drin bleiben. frag mich nicht
