@@ -80,4 +80,4 @@ light_source
 #include "shroomforest.inc"
 
 //some_shooms()
-some_looking_shrooms(<31, 0, 15.4 + clock*12>)
+some_looking_shrooms(<31, 0, alice_position_z>)
