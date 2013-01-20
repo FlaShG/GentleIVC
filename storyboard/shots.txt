@@ -14,9 +14,9 @@
 ? close-up alice ("huh?")
 - meeting gentleman
 - talking to gentleman
-- gentleman tosses clock
+- gentleman tosses pocket watch
 
-# alice looks around in clock
+# alice looks around in pocket watch
 - seeing the tea party setup
 - sitting down
 - gentleman talking
