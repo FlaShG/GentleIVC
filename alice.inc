@@ -3,10 +3,11 @@
 #include "skies.inc"  
 #include "colorize_intersection.inc"
            
+/*
 #declare camera_look_at = <0,2,0>;
 #declare camera_offset_to_look_at = <-2,1,7>; 
  
-/*camera
+camera
 {
    location camera_look_at + camera_offset_to_look_at
    look_at camera_look_at
@@ -86,7 +87,7 @@
 #end   
 
          
-#declare alice_body = 
+#macro alice_body (head_rotation) 
 merge
 {
    colorize_intersection
@@ -220,6 +221,7 @@ merge
       }*/
       
       translate <0,2.7,0>
+      rotate y*head_rotation
    }
    
    /*arm
@@ -239,12 +241,37 @@ merge
       alice_skin_color
    )*/
    
-}  
+}   
+
+#end 
 
 #macro alice(r_1, r_2, l_1, l_2)
 union
 {
-   object{ alice_body }
+   object{ alice_body (0)}
+     
+   alice_arm
+   (
+      <0.2,2,0>,
+      r_1,
+      r_2,
+      false
+   )
+   
+   alice_arm
+   (
+      <-0.2,2,0>,
+      l_1,
+      l_2,
+      true
+   )
+}
+#end  
+
+#macro alice_with_hr(r_1, r_2, l_1, l_2, h_r)
+union
+{
+   object{ alice_body (h_r)}
      
    alice_arm
    (
