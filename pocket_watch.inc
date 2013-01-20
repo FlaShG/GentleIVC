@@ -14,9 +14,11 @@
 
 
 #include "alice.inc"
-                                                      
-#declare camera_look_at = <3, 2, 2>;                                           
-#declare camera_offset_to_look_at = <0, -1.5, 20.0001 > * 0.1;
+#include "tea.inc"
+
+/*                                                      
+#declare camera_look_at = <3, 2, 2+10*clock>;                                           
+#declare camera_offset_to_look_at = <0, 1.5, 20.0001 > * 0.1;
       
 camera
 {
@@ -26,7 +28,7 @@ camera
    //aperture 0.25  
    //blur_samples 25
    right x*image_width / image_height
-}
+} */
 //==================current====================
 
       
@@ -96,9 +98,9 @@ camera
     }
     
 #end
-
+      
 #macro test(numbers, rad, obj_scale, default_angle, rot)
-    writeNumbersToFace(numbers, rad, "arial.ttf", obj_scale, material{texture{ pigment{ color rgb< 1.0, 0.6, 0.85>*2 } normal { bumps 0.5  scale 0.01 } finish { phong 0.1 }}}, default_angle, rot)
+    writeNumbersToFace(numbers, rad, "arial.ttf", obj_scale, material{texture{ pigment{ color White } normal { bumps 0.5  scale 0.01 } finish { phong 0.1 }}}, default_angle, rot)
     //writeNumbersToFace(numbers, rad,"arial.ttf", obj_scale, material{M_Vicks_Bottle_Glass}, default_angle, rot)
                       //normal { bumps 0.5  scale 0.01 }
                        // finish { phong 0.1 }
@@ -113,13 +115,29 @@ material { M_Glass }
 //material { texture { pigment { color Red }}}
 
 
+#declare borderTexture =
+texture
+{
+   T_Gold_2E 
+   //Silver3
+}
+
+#declare gearTexture =
+texture 
+{ 
+   T_Gold_2E 
+   //Silver3
+   finish { ambient 0.15 diffuse 0.85 phong 0.5 reflection 0.40}
+   normal { bumps 0.5 scale 0.05 }
+}
+
 #declare torusHight = 0.10;
 #declare torusRadius = 1;
 
 #declare torusFaceScaleMin = 0.5;
-#declare torusFaceScaleMax = 0.6;
+#declare torusFaceScaleMax = 0.55;
 
-#declare torusGlassScaleMin = 1.5;
+#declare torusGlassScaleMin = 1.6;
 
 
 // ------------------ The frame of the clocl -------------------                
@@ -130,7 +148,7 @@ merge
     
     cylinder { 0, torusHight/2*y , 1}
   
-    texture { T_Gold_1B }                  
+    texture { borderTexture }
 }                     
 
 #declare clockHandle = 
@@ -161,7 +179,7 @@ merge
 
     
     
-    texture{T_Gold_1B}
+    texture { borderTexture }
 }
 
 
@@ -177,7 +195,7 @@ object
             torusRadius - torusHight/2
     }
                 
-    texture { T_Gold_1B }
+    texture {borderTexture}
 }
 
 #declare clockGlass =
@@ -207,11 +225,11 @@ merge
      torusRadius - torusHight/2
                        
       texture 
-      { 
-         pigment { color rgb< 1, 1, 1>*0.5 } //  color Gray50
+      {
+         pigment { color White*0.02 } 
          //normal { bumps 0.5 scale 0.05 }
-         finish { phong 1 }
-      }  // end of texture 
+         finish { phong 0.5 reflection 0.02 }
+      }
       
          
    }
@@ -221,13 +239,29 @@ merge
      test(bars, torusRadius - torusHight*2.0, <1, 0.5, 1>*0.6, 0 , on) 
                  
      rotate -x*90
-     translate torusFaceScaleMin * 1.01 * torusHight * y
+     scale y*1.2
+     translate torusFaceScaleMax * 1.1 * torusHight * y
    }
-   cylinder
+   merge
    {
-      torusFaceScaleMin * torusHight * y,
-      1.5 * torusHight * y ,                        
-      0.05
+      cylinder
+      {
+         torusFaceScaleMin * torusHight * y,
+         1.25 * torusHight * y ,                        
+         0.05       
+      }
+      
+      sphere
+      { 
+         0 
+         0.05
+         
+         scale y*0.7
+         
+         translate 1.25 * torusHight * y 
+      }
+      texture {gearTexture }
+      
       
    } 
 }
@@ -247,28 +281,31 @@ merge
         {
             0.2*z,
             0*z,                        
-            0.06
+            0.05
             
             1                  
-            //pigment {color Green}
         }
         cylinder
         {
             0*z,
             -1*z,                        
-            0.05
+            0.04
             
             1                  
-            //pigment {color Red}
         }
          
         sturm       
-        //texture { T_Gold_1B }
     }
     torus { 0.1, 0.02 }
     scale y*0.4
     
-    pigment{color Red}
+   texture 
+   { 
+      pigment{ color rgb< 0.25, 0.0, 0.0> } 
+      normal { bumps 0.5 scale 0.05 }
+      finish { phong 1 reflection 0.01}
+   } 
+   
     
 }                       
 
@@ -286,25 +323,25 @@ merge
             0.06
             
             1                  
-            //pigment {color Green}
         }
         cylinder
         {
             0*z,
-            -1*z,                        
+            -0.9*z,                        
             0.05
             
             1                  
-            //pigment {color Red}
         }
          
         sturm       
-        //texture { T_Gold_1B }
     }
-    torus { 0.1, 0.02 }
+    //torus { 0.1, 0.02 }
     scale y*0.4
     
-    pigment{color Yellow}
+    texture
+    {
+      Polished_Chrome
+    }
 }
 #declare hourHand = 
 merge
@@ -320,25 +357,25 @@ merge
             0.06
             
             1                  
-            //pigment {color Green}
         }
         cylinder
         {
             0*z,
-            -1*z,                        
+            -0.6*z,                        
             0.05
             
             1                  
-            //pigment {color Red}
         }
          
         sturm       
-        //texture { T_Gold_1B }
     }
-    torus { 0.1, 0.02 }
-    scale y*0.4
+    //torus { 0.1, 0.02 }
+    scale y*0.4 + x*0.9
     
-    pigment{color Blue}
+    texture
+    {
+      Polished_Chrome
+    }
 }
 
 
@@ -358,7 +395,6 @@ merge
     #local angle_second = 360  * frac_second;
     
     
-    merge{
     merge
     {                                           
         difference
@@ -366,17 +402,29 @@ merge
             object{border}
             object{innerSpace}
         }        
-        //object {clockHandle rotate x*-90 translate -(torusRadius+ torusHight)*0.98*z}
+        object {clockHandle rotate x*-90 translate -(torusRadius+ torusHight)*0.98*z}
         clockFace
-        object {secondHand scale z*torusRadius*0.9 translate torusHight*1.15*y rotate y*angle_second}
-        object {minuteHand scale z*torusRadius*0.9 translate torusHight*1.3*y rotate y*angle_minute}
-        object {hourHand   scale z*torusRadius*0.9 translate torusHight*1.40*y rotate y*angle_hour}
+        object {secondHand scale z*torusRadius*0.9 translate torusHight*1.1*y rotate y*angle_second}
+        object {minuteHand scale z*torusRadius*0.9 translate torusHight*1.25*y rotate y*angle_minute}
+        object {hourHand   scale z*torusRadius*0.9 translate torusHight*1.35*y rotate y*angle_hour}
         
         clockGlass
         
-        scale 30
+        //scale 30
     }    
-    object
+
+
+#end
+
+//pocket_watch(11, 45, clock*25)
+                      
+//light_source
+//{
+//   <42,42,-42> 1.0
+//}   
+
+
+/*    object
     {
       ready_alice
       
@@ -384,20 +432,10 @@ merge
       
       translate x*3 + y * torusHight * torusFaceScaleMax * 30
     }
-    //box{ <-2,-2,0.9> , 11 scale x*100 pigment {color Green} }
-    }
-#end
-
-pocket_watch(13, 10, clock*25)
-                      
-light_source
-{
-   <42,42,-42> 1.0
-}   
-
+  */
 
             
-sky_sphere{ S_Cloud5 }          
+//sky_sphere{ S_Cloud5 }          
 
 
 
