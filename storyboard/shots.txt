@@ -25,7 +25,7 @@
 - alice ducks too, clock hand passing
 - tea sliding over table, camera follows
 - gentleman talking
-- alice takes a sip
+# alice takes a sip
 - clock hand hits her
 
 - black
