@@ -13,7 +13,7 @@ camera
 {
    location camera_look_at + camera_offset_to_look_at
    look_at camera_look_at
-   focal_point <46, 11.8 * 0.7, 20.4>
+   focal_point camera_look_at
    aperture 0.2
    blur_samples 25
    right x*image_width / image_height
