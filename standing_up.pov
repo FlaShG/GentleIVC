@@ -6,7 +6,7 @@
 #include "shroom.inc"
 
                                                       
-#declare camera_look_at = <46, 11.8 * 0.7, 20.4>;                                           
+#declare camera_look_at = <46 - clock*.5, 11.8 * 0.7, 20.4>;                                           
 #declare camera_offset_to_look_at = <-.5-clock*1.5, 0.3, -3> * 0.3;    
                                                                        
 camera
@@ -20,17 +20,17 @@ camera
 }
 
        
-/*object
+object
 {
-   shroom(35 * 0.7, 0, 1.2, shroomtexture, false) 
+   shroom(34.1 * 0.7, 0, 1.2, shroomtexture, false) 
    translate <46, 0, 20.7>    
-}*/
+}
 
 object
 {
    ready_alice      
    scale 0.2
-   translate <46, 7 + clock * .6, 20.7>
+   translate <46, 7.6, 20.7>
 }
 
 /*light_source
