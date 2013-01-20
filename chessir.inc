@@ -341,7 +341,7 @@ sphere{
    
 #declare cat_eye3 =   
 light_source {
-0, <0,.3,0>
+0, <0,.3,0> * (intensity)
 fade_distance .6
 fade_power 3
 looks_like
