@@ -234,7 +234,7 @@ union // tea + cup
    } //------------------ end of "Rauch" 
 
 
-   steam
+   //steam
             
 
    scale 0.1
@@ -304,28 +304,6 @@ merge
    }
 }  
 
-
-#declare teacup_and_spoon_on_saucer =
-merge
-{                    
-   object
-   {
-      saucer
-   }
-   object
-   {
-      teacup
-      translate y*0.06
-   }
-   
-   object{
-      spoon
-      scale .225
-      rotate x*-81+y*50
-      translate x*-.7+y*.23+z*.1
-   }
-}  
-
 #declare spoon_in_teacup_on_saucer =
 union
 {                    
@@ -336,6 +314,7 @@ union
    object
    {
       teacup
+      scale 0.8
       translate y*0.06
    }
    
@@ -344,5 +323,39 @@ union
       scale .225
       rotate x*240+y*180
       translate x*-.2+y*.8
+      
+      scale .8
    }   
+}
+
+#declare spoon_on_saucer =
+merge
+{                    
+   object
+   {
+      saucer
+   }
+   
+   object{
+      spoon
+      scale .225
+      rotate x*-81+y*50
+      translate x*-.8+y*.25+z*.1 
+      
+      scale .8
+   }
+}
+
+#declare teacup_and_spoon_on_saucer =
+merge
+{                    
+   object
+   {
+      spoon_on_saucer
+   }
+   object
+   {
+      teacup
+      translate y*0.06
+   }
 }

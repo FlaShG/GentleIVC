@@ -42,14 +42,29 @@
 
 #macro one_shroom_in_forest(looking, myPosition)
    object
-   {  
-      shroom(clip((Rand_Gamma(2,1,random)*5),2,30), rand(random) * 0.3, 1+(rand(random)*0.3), shroomtexture, true)
+   {                                                                                               
+      #local shroom_height = clip((Rand_Gamma(2,1,random)*5),2,30);
+      #local shroom_shear  = rand(random) * 0.3;
+      #local shroom_top_radius = 1+(rand(random)*0.3);
+      
+      
+      #local shroom_full_angle = rand(random)*360;
+      #local shroom_full_pos = <i_x * 2 + rand(random) - 0.5, 0, i_z * 2 + rand(random) - 0.5>;
+      
+      #local shroom_top_angle = +RotateTo(<0,0,1>, shroom_full_pos*(1-y), myPosition*(1-y), y) - shroom_full_angle; 
+      
       
       #if(looking)
-         transform_lookatme(myPosition)                   
+         shroom_angle(shroom_height, shroom_shear, shroom_top_radius, shroomtexture, shroom_top_angle, true)
       #else
-         transform_normalshroom()
-      #end
+         shroom(shroom_height, shroom_shear, shroom_top_radius, shroomtexture, true)                        
+      #end                                                                                                  
+      
+      
+      rotate y*shroom_full_angle
+      
+      
+      translate shroom_full_pos
    }
 #end
 

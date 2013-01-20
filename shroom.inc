@@ -24,6 +24,10 @@ texture
 }
 
 #macro shroom(shroom_height, shroom_shear, shroom_top_radius, shroom_top_texture, shroom_gentle)   
+   shroom_angle(shroom_height, shroom_shear, shroom_top_radius, shroom_top_texture, 0, shroom_gentle)   
+#end
+
+#macro shroom_angle(shroom_height, shroom_shear, shroom_top_radius, shroom_top_texture, shroom_top_angle, shroom_gentle)   
    merge
    {
        blob
@@ -103,7 +107,8 @@ texture
              translate z*0.8*(shroom_top_radius)
           }
        #end
-       
+          rotate y * shroom_top_angle
+          
           translate y*((shroom_height) * 0.3) + (x * (shroom_shear) * ((shroom_height) / 3.3))
           
           texture

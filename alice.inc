@@ -219,9 +219,9 @@ merge
          alice_eye
          rotate y*-16
       }*/
-      
+                
+      rotate head_rotation          
       translate <0,2.7,0>
-      rotate y*head_rotation
    }
    
    /*arm
