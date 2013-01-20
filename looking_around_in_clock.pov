@@ -1,14 +1,15 @@
 
 #include "alice.inc"
+#include "pocket_watch.inc"
 
 #include "math.inc"
 
                    
 //#declare alice_position_z = 15.4 + clock*12;
-#declare alice_position_z = 15.4 + clock*16;
+#declare alice_position_z = -20 + clock*2;
                                                       
-#declare camera_look_at = <31, 0.5, alice_position_z>;                                           
-#declare camera_offset_to_look_at = <0, 0.2, 2>;    
+#declare camera_look_at = <5, 0.2 + clock*0.2, alice_position_z>;                                           
+#declare camera_offset_to_look_at = <1 - clock * 2, 1 + clock, 4 + clock>*0.3;    
                                                                        
 camera
 {
@@ -28,7 +29,15 @@ light_source
 light_source
 {
    light_vector*-2000 0.07 shadowless
-} 
+}
+
+
+object
+{
+   pocket_watch(9, 15, 45)
+   scale 30
+   translate y*-1.64
+}
  
 
 
@@ -57,5 +66,5 @@ object
    scale 0.2
    scale y * (1+sin(clock * schritte * 2) * 0.02)
    scale z * (1+cos(clock * schritte * 2) * 0.02)
-   translate <31, 0, alice_position_z>    
+   translate <5, 0, alice_position_z>    
 }
