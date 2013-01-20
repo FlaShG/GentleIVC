@@ -210,6 +210,20 @@ union
 }
 #end
 
+#declare few_shrooms =
+union
+{
+#declare i_x = -5;
+#while(i_x < 5) 
+        #declare i_z = -5;
+        #while(i_z < 5)                                
+                one_shroom_in_forest(off, 0) 
+                #declare i_z = i_z+1;         
+        #end
+        
+        #declare i_x = i_x+1;
+#end 
+}
                   
 
 #macro some_shrooms()                      looking_shroom_forest(off, 0)           #end
