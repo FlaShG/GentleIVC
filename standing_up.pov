@@ -6,7 +6,7 @@
 #include "shroom.inc"
 
                                                       
-#declare camera_look_at = <46 - clock*.5, 11.8 * 0.7, 20.4>;                                           
+#declare camera_look_at = <46 - clock*sqrt(clock)*1.5, 11.8 * 0.7, 20.4>;                                           
 #declare camera_offset_to_look_at = <-.5-clock*1.5, 0.3, -3> * 0.3;    
                                                                        
 camera
@@ -14,7 +14,7 @@ camera
    location camera_look_at + camera_offset_to_look_at
    look_at camera_look_at
    focal_point camera_look_at
-   aperture 0.2
+   aperture 0.005
    blur_samples 25
    right x*image_width / image_height
 }
