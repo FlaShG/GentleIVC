@@ -65,7 +65,7 @@
 
 #declare i_x = 50;
 #while(i_x < 100) 
-        #declare i_z = -100;
+        #declare i_z = -10;
         #while(i_z < 50)
                 object
                 {  
