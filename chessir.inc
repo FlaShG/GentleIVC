@@ -20,7 +20,7 @@ camera
    2 1
 }*/   
 
-#macro chessir_cat(seconds)
+#macro chessir_cat(seconds, intensity)
 
 #declare cat_skull=
 sphere {
@@ -90,7 +90,7 @@ merge{
 #end  
 }
 
-pigment{ color rgb 1 }
+pigment{ color rgb 1*sqrt((intensity)) }
 
 /*hollow
 
@@ -280,7 +280,7 @@ object
    {
      media
      {
-        absorption 42
+        absorption 42*(intensity)
         density
          {
             granite
@@ -358,7 +358,7 @@ interior
 {  
    media
    {
-      absorption 1
+      absorption (intensity)
       density
       {
          spherical
@@ -372,10 +372,10 @@ interior
 
    media
      {
-        emission 1
-	absorption 2 
+        emission (intensity)
+	absorption 2*(intensity)
 	
-	scattering{1,42}
+	scattering{1,42*(intensity)}
 	
 	density
 	{
@@ -416,7 +416,7 @@ interior
       {
          <.45,-.075,.3>, 0.5
          scale <0.2,.8,0.25> 
-         pigment { color rgbt <0,0,0,.1>}
+         pigment { color rgbt <0,0,0,1-.9*(intensity)>}
       } 
    
 } 
@@ -440,7 +440,7 @@ pigment{ color rgbt 1 }
    
    media
    {
-      absorption 5
+      absorption 5*(intensity)
       density
       {
          granite
@@ -455,7 +455,7 @@ pigment{ color rgbt 1 }
 
    media
      {
-        absorption 42
+        absorption 42*(intensity)
 	
 	density
 	{
