@@ -16,7 +16,7 @@
 - talking to gentleman
 - gentleman tosses pocket watch
 
-- alice looks around in pocket watch
+# alice looks around in pocket watch
 - seeing the tea party setup
 - sitting down
 - gentleman talking
