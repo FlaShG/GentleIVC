@@ -197,8 +197,8 @@ union
 
                   
 
-#macro some_shooms()                       looking_shroom_forest(off, 0)           #end
-#macro some_looking_shooms(myPosition)     looking_shroom_forest(on, myPosition)   #end
+#macro some_shrooms()                      looking_shroom_forest(off, 0)           #end
+#macro some_looking_shrooms(myPosition)    looking_shroom_forest(on, myPosition)   #end
 
 
 #macro more_shrooms()                   more_looking_shroom_forest(off, 0)         #end
