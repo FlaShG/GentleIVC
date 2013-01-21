@@ -1,6 +1,6 @@
 #include "colors.inc"  
 #include "textures.inc"  
-#include "Woods.inc"
+#include "woods.inc"
   
 #declare table_texture =
    texture

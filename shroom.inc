@@ -107,14 +107,14 @@ texture
              translate z*0.8*(shroom_top_radius)
           }
        #end
-          rotate y * shroom_top_angle
-          
-          translate y*((shroom_height) * 0.3) + (x * (shroom_shear) * ((shroom_height) / 3.3))
-          
           texture
           {
              shroom_top_texture
-          }
+          }          
+          
+          rotate y * shroom_top_angle
+          
+          translate y*((shroom_height) * 0.3) + (x * (shroom_shear) * ((shroom_height) / 3.3))
        }
        
 
