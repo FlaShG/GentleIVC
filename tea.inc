@@ -58,66 +58,75 @@ sor
    
    sturm
    scale <0.95 1.001 0.95>
-} 
+}    
+
+#declare empty_teacup =
+union // teacup
+{ 
+   difference
+   {
+      object {teacup_outershell }
+      object {teacup_innershell }
+   }                             
+   difference
+   {
+      cylinder
+      {
+         0
+         <0 2.3 0>
+         3.5   
+         //pigment{color Blue}
+      }
+      sphere
+      {
+         -10*y
+         10.5
+         //pigment{color Green}
+      }
+   }
+
+// handle
+   sphere_sweep
+   {
+      //linear_spline                 // linear curve
+      //cubic_spline                // alternative spline curves
+      b_spline
+      10,                            // number of specified sphere positions
+      < 4.5,  1.9, 0>, 0.2                // position, radius
+      < 4.7,  2.0, 0>, 0.3
+      < 4.8,  2.1, 0>, 0.5
+      < 6.5,  4.5, 0>, 0.5
+      < 9.0,  5.5, 0>, 0.5
+      <11.0, 10.0, 0>, 0.5
+      <11.5, 11.7, 0>, 0.9
+      //<10.0, 12.0, 0>, 0.5
+      //<10.0,12.0, 0>, 0.5
+      < 9.0,   9.0, 0>, 0.5
+      < 6.5, 11.0, 0>, 0.5
+      < 6.5, 11.0, 0>, 0.4
+
+      tolerance 0.1             // optional
+   }
+
+   //texture { T_Gold_1B }  
+   //pigment { Col_Glass_Orange}
+   //pigment { color Red}
+          
+          
+   texture{ porcelain } 
+   
+   scale 0.1
+
+} // teacup end
 
 #declare teacup =
 union // tea + cup
 {
-   union // teacup
-   { 
-      difference
-      {
-         object {teacup_outershell }
-         object {teacup_innershell }
-      }                             
-      difference
-      {
-         cylinder
-         {
-            0
-            <0 2.3 0>
-            3.5   
-            //pigment{color Blue}
-         }
-         sphere
-         {
-            -10*y
-            10.5
-            //pigment{color Green}
-         }
-      }
-
-// handle
-      sphere_sweep
-      {
-         //linear_spline                 // linear curve
-         //cubic_spline                // alternative spline curves
-         b_spline
-         10,                            // number of specified sphere positions
-         < 4.5,  1.9, 0>, 0.2                // position, radius
-         < 4.7,  2.0, 0>, 0.3
-         < 4.8,  2.1, 0>, 0.5
-         < 6.5,  4.5, 0>, 0.5
-         < 9.0,  5.5, 0>, 0.5
-         <11.0, 10.0, 0>, 0.5
-         <11.5, 11.7, 0>, 0.9
-         //<10.0, 12.0, 0>, 0.5
-         //<10.0,12.0, 0>, 0.5
-         < 9.0,   9.0, 0>, 0.5
-         < 6.5, 11.0, 0>, 0.5
-         < 6.5, 11.0, 0>, 0.4
-  
-         tolerance 0.1             // optional
-      }
-
-      //texture { T_Gold_1B }  
-      //pigment { Col_Glass_Orange}
-      //pigment { color Red}
-             
-             
-      texture{ porcelain }
-
-   } // teacup end
+   object
+   {
+      empty_teacup
+      scale 10
+   }
 
    #declare tea_in_teacup =           
    union
