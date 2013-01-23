@@ -5,30 +5,27 @@
 
 ==== POV-RAY ====
 # falling down
-- standing up
-  ? cat
-  ? looking around
+# standing up
+- cat appears
+- talking alice
 # sliding down
-? hitting the ground
 # running through forest
-? close-up alice ("huh?")
+- running through forest 2
 - meeting gentleman
-- talking to gentleman
+- gentleman talking
 - gentleman tosses pocket watch
 
-# alice looks around in pocket watch
+- alice looks around in pocket watch (camera moves up)
 - seeing the tea party setup
+- gentleman invites
 - sitting down
-- gentleman talking
+- clock man talking
 - close-up tea into teacup
-- gentleman ducking
-- alice ducks too, clock hand passing
-- tea sliding over table, camera follows
-- gentleman talking
-# alice takes a sip
-- clock hand hits her
-
-- black
+- gentleman talking again
+- alice sips
+- gentleman warning
+- head gets hit
+- black (gentleman talking)
 
 ? tea slow motion, getting slower, time starts running backwards
 

@@ -291,8 +291,16 @@ union
 }
 #end
  
- 
-#declare ready_alice = alice(z*-50, y*-100, z*-50, y*-100);
+                                                           
+#macro ready_alice_with_hr(h_r)
+object
+{
+   alice_with_hr(z*-50, y*-100, z*-50, y*-100, h_r)
+}
+#end
+                                                           
+                                                           
+#declare ready_alice = ready_alice_with_hr(0);//alice(z*-50, y*-100, z*-50, y*-100);
    
 /*
 #declare alice =

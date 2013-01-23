@@ -21,7 +21,7 @@ camera
    look_at camera_look_at
    focal_point camera_look_at
    aperture 0.2
-   //blur_samples 25
+   blur_samples 25
    right x*image_width / image_height
 }
  
