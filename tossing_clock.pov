@@ -74,4 +74,4 @@ light_source
 #include "shroomforest.inc"
 
 //some_shooms()
-//some_looking_shrooms(<31, 0, 33.5>)
+some_looking_shrooms(<31, 0, 33.5>)
