@@ -10,9 +10,11 @@
 # sliding down
 # running through forest
 # running through forest 2
-- meeting gentleman
-- gentleman talking
+# meeting gentleman
+# gentleman talking
 - gentleman tosses pocket watch
+
+  black (poff sound), fade in to...
 
 # alice looks around in pocket watch (camera moves up)
 - seeing the tea party setup
