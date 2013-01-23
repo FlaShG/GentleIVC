@@ -85,7 +85,7 @@
 light_source
 {
    <-22,42,-42>*2000 color rgb <0.757, 0.682, 0.612>*0.6    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
-}   
+}
             
 sphere
 { 0, 1
@@ -232,4 +232,10 @@ union
 
 #macro more_shrooms()                   more_looking_shroom_forest(off, 0)         #end
 #macro more_looking_shrooms(myPosition) more_looking_shroom_forest(on, myPosition) #end
+
+#declare shroom_forest_light =
+light_source
+{
+   <-22,42,-42>*2000 color rgb <0.757, 0.682, 0.612>*0.6    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
+}
  

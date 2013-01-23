@@ -33,13 +33,18 @@ object
    translate <46, 7.6, 20.7>
 }
 
-/*light_source
+light_source
 {
    <-22,42,-42>*200 color rgb <0.757, 0.682, 0.612>*0.6    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
-}*/ 
+} 
    
 //====================scene====================
                            
 #include "shroomforest.inc" 
 some_shrooms()
 more_shrooms()
+ 
+/*light_source
+{ 
+   shroom_forest_light
+}*/

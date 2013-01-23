@@ -1,12 +1,12 @@
 #include "math.inc"
 
 #include "rand.inc"
+#include "rand.inc"
 #declare random = seed (1338);  
 #declare gamma_random = Rand_Gamma(1,1,random); //muss hier drin bleiben. frag mich nicht
                      
 #include "alice.inc"
 #include "shroom.inc"
-#include "chessir.inc"
 
                                                       
 #declare camera_look_at = <46 - 1.5, 11.8 * 0.7, 20.4>;                                           
@@ -36,6 +36,15 @@ object
    translate <46, 7.6, 20.7>
 }
 
+//====================scene====================
+                           
+#include "shroomforest.inc" 
+some_shrooms()
+more_shrooms()
+
+   
+#include "chessir.inc"   
+   
 object
 {
    chessir_cat(clock * 2, clip(clock * 2, 0, 1))
@@ -47,10 +56,4 @@ object
 light_source
 {
    <-22,42,-42>*200 color rgb <0.757, 0.682, 0.612>*0.6    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
-} 
-   
-//====================scene====================
-                           
-#include "shroomforest.inc" 
-some_shrooms()
-more_shrooms()
+}
