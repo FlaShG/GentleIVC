@@ -11,13 +11,8 @@
                    
 //#declare alice_position_z = 15.4 + clock*12;
                                                       
-//#declare camera_look_at = <31, 0.5, 34>;
-//#declare camera_offset_to_look_at = <-1, 0, -3>;
-
-#declare clock_position = <31, 1, 33>
-
-#declare camera_look_at = clock_position;
-#declare camera_offset_to_look_at = <-0.1, 0, -1.5>;    
+#declare camera_look_at = <31, 1, 33.7>;
+#declare camera_offset_to_look_at = <-0.02, 0, -1.3>;
                                                                        
 camera
 {
