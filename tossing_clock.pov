@@ -28,7 +28,7 @@ camera
    location <31, 3+sqrt(sqrt(clock))*4.5, 33.45>
    look_at camera_look_at
    focal_point camera_look_at
-   aperture 0.2
+   aperture 0.2 - clock_curve*0.19
    blur_samples 25
    right x*image_width / image_height
 } 
@@ -74,4 +74,4 @@ light_source
 #include "shroomforest.inc"
 
 //some_shooms()
-some_looking_shrooms(<31, 0, 33.5>)
+//some_looking_shrooms(<31, 0, 33.5>)
