@@ -346,7 +346,54 @@ colorize_intersection
          gentle_body
       }
    }
-#end 
+#end
+
+#macro looking_gentleman(look) 
+   merge
+   {
+      merge
+      {
+         object
+         {
+            head   
+            translate <0,2,0>
+
+         }
+
+         object
+         {
+            classy_hat
+            translate <0,2.6,0>
+         } 
+         
+         object
+         {
+            talking_stache(0)
+            translate <0,1.9,0.9> 
+         }
+         
+         object
+         {
+            monocle 
+            translate <0.33,2.34,1>
+         }  
+         
+         object
+         {
+            fancy_bowtie               
+            translate <0,1.1,0.7>         
+         }
+         
+         rotate (look)
+         translate y
+      }     
+      
+      object
+      {
+         gentle_body
+      }
+   }
+#end
 
 #declare gentleman = talking_gentleman(0);
   
