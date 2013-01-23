@@ -66,7 +66,7 @@ object
 
 light_source
 {
-   <-22,42,42>*200 color rgb <0.757, 0.682, 0.612>*0.5 shadowless    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
+   <-22,42,42>*2000 color rgb <0.757, 0.682, 0.612>*0.5 shadowless    // moonlight according to   http://www.perbang.dk/rgb/C1AE9C/
 } 
    
 //====================scene====================
