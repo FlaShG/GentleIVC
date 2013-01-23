@@ -23,7 +23,7 @@
 # gentleman talking again
 # alice sips
 # gentleman warning
-- head gets hit
+# head gets hit
 # black (gentleman talking)
 
 ? tea slow motion, getting slower, time starts running backwards
