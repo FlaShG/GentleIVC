@@ -32,7 +32,7 @@ camera
 
 object
 {
-   gentleman
+   talking_gentleman(clip( sin(clock * pi * 2) * 12 , -10, 10 ))
    scale 0.3
             
    rotate y*180
