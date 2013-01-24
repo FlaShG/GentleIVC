@@ -10,7 +10,7 @@
 
                                                       
 #declare camera_look_at = <46, 8.03, 20.7>;                                           
-#declare camera_offset_to_look_at = <-0.2, 0.3, 3> * 0.3;    
+#declare camera_offset_to_look_at = <0.5, -0.6, 3> * 0.25;    
                                                                        
 camera
 {
@@ -39,8 +39,8 @@ object
 //====================scene====================
                            
 #include "shroomforest.inc"
-some_shrooms()
-object
+//some_shrooms()
+/*object
 {
     more_shrooms()
     //rotate y*180
@@ -48,7 +48,7 @@ object
     
     rotate y*90
     translate <0, 0, 40>
-}
+}*/
 
    
 #include "chessir.inc"   
