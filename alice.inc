@@ -220,7 +220,7 @@ merge
          rotate y*-16
       }*/
                 
-      rotate head_rotation          
+      rotate (head_rotation)
       translate <0,2.7,0>
    }
    
