@@ -40,7 +40,12 @@ object
                            
 #include "shroomforest.inc"
 some_shrooms()
-//more_shrooms()
+object
+{
+    more_shrooms()
+    rotate y*180
+    translate <40,0,40>
+}
 
    
 #include "chessir.inc"   
