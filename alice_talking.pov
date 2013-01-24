@@ -10,12 +10,13 @@
 
                                                       
 #declare camera_look_at = <46, 8.03, 20.7>;                                           
-#declare camera_offset_to_look_at = <0.5, -0.6, 3> * 0.25;    
+#declare camera_offset_to_look_at = <0.5, -0.6, 3> * 1.25;    
                                                                        
 camera
 {
    location camera_look_at + camera_offset_to_look_at
    look_at camera_look_at
+   angle 20
    focal_point camera_look_at
    aperture 0.005
    blur_samples 25
