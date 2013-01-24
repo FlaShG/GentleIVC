@@ -6,7 +6,7 @@
 # falling down
 # standing up
 # cat appears
-- talking alice
+# talking alice
 # sliding down
 # running through forest
 # running through forest 2
@@ -19,7 +19,7 @@
 # alice looks around in pocket watch (camera moves up)
 # seeing the tea party setup
 - gentleman invites
-- sitting down
+# sitting down
 # clock man talking
 - close-up tea into teacup
 # gentleman talking again
