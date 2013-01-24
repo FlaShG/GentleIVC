@@ -39,7 +39,7 @@ object
 //====================scene====================
                            
 #include "shroomforest.inc"
-//some_shrooms()
+some_shrooms()
 /*object
 {
     more_shrooms()
