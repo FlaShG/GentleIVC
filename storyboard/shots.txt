@@ -12,12 +12,12 @@
 # running through forest 2
 # meeting gentleman
 # gentleman talking
-- gentleman tosses pocket watch
+# gentleman tosses pocket watch
 
   black (poff sound), fade in to...
 
 # alice looks around in pocket watch (camera moves up)
-- seeing the tea party setup
+# seeing the tea party setup
 - gentleman invites
 - sitting down
 # clock man talking
