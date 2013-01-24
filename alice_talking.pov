@@ -43,8 +43,11 @@ some_shrooms()
 object
 {
     more_shrooms()
-    rotate y*180
-    translate <40,0,40>
+    //rotate y*180
+    //translate <40,0,40>
+    
+    rotate y*90
+    translate <0, 0, 40>
 }
 
    
@@ -52,7 +55,7 @@ object
    
 object
 {
-   chessir_cat(clock * 2, clip(clock * 2, 0, 1))
+   chessir_cat(clock * 2, 1)
    scale 0.5                                    
    rotate y*200
    translate <46, 7.6, 20.7> + <0.6, 0.5, 1.9>
