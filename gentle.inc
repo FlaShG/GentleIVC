@@ -378,12 +378,6 @@ colorize_intersection
             translate <0.33,2.34,1>
          }  
          
-         object
-         {
-            fancy_bowtie               
-            translate <0,1.1,0.7>         
-         }
-         
          rotate (look)
          translate y
       }     
@@ -391,6 +385,11 @@ colorize_intersection
       object
       {
          gentle_body
+      }     
+      object
+      {
+         fancy_bowtie               
+         translate <0,1.96,0.73>         
       }
    }
 #end
