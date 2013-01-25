@@ -59,7 +59,7 @@ object
    chessir_cat(clock * 2, 1)
    scale 0.5                                    
    rotate y*200
-   translate <46, 7.6, 20.7> + <0.6, 0.5, 1.9>
+   translate <46, 7.6, 20.7> + <0.6, 0.5, 1.9> + z*1
 }
 
 light_source
