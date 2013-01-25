@@ -5,7 +5,7 @@
 #include "spoon.inc"
 #include "pocket_watch.inc"
 #include "utah_teapot.inc"
-//#include "clock_skysphere.inc"
+#include "clock_skysphere.inc"
 
 #include "alice.inc"
 
@@ -20,7 +20,7 @@ camera
    look_at camera_look_at
    focal_point camera_look_at
    aperture 0.05  
-   //blur_samples 25  
+   blur_samples 25  
    angle 35
    right x*image_width / image_height
 }  
