@@ -18,7 +18,7 @@ camera
 {
    location (camera_look_at + camera_offset_to_look_at)
    look_at camera_look_at
-   focal_point camera_look_at
+   focal_point <1.1,0.8,1.2>+<-5,0,-10>
    aperture 0.05  
    blur_samples 25  
    angle 35
