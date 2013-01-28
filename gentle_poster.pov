@@ -182,7 +182,7 @@ translate text_base_pos
                            
 #include "shroomforest.inc"
 some_shrooms()  
-//more_shrooms()   
+more_shrooms()   
 
 light_source
 {
