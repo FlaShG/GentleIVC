@@ -1,0 +1,14 @@
+This [video/theatre piece/...] uses these sounds from freesound:
+
+16 - tea-sound_4s.mp3:	stijn
+16 - tea-sound_7s.mp3:	LG
+clock_tick_9.mp3:	acrober
+drink_tea.mp3:		sKydran
+ZappsateliteHit.mp3:	SomeAudioGuy
+tnt.mp3:		sidohzen
+
+
+
+http://incompetech.com
+Easy Lemon.mp3
+Sneaky Snitch.mp3

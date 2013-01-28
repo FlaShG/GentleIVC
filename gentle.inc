@@ -378,12 +378,6 @@ colorize_intersection
             translate <0.33,2.34,1>
          }  
          
-         object
-         {
-            fancy_bowtie               
-            translate <0,1.1,0.7>         
-         }
-         
          rotate (look)
          translate y
       }     
@@ -391,6 +385,57 @@ colorize_intersection
       object
       {
          gentle_body
+      }     
+      object
+      {
+         fancy_bowtie               
+         translate <0,1.96,0.73>         
+      }
+   }
+#end       
+
+#macro looking_gentleman2(look, talk) 
+   merge
+   {
+      merge
+      {
+         object
+         {
+            head   
+            translate <0,2,0>
+
+         }
+
+         object
+         {
+            classy_hat
+            translate <0,2.6,0>
+         } 
+         
+         object
+         {
+            talking_stache((talk))
+            translate <0,1.9,0.9> 
+         }
+         
+         object
+         {
+            monocle 
+            translate <0.33,2.34,1>
+         }  
+         
+         rotate (look)*y
+         translate y
+      }     
+      
+      object
+      {
+         gentle_body
+      }     
+      object
+      {
+         fancy_bowtie               
+         translate <0,1.96,0.73>         
       }
    }
 #end
