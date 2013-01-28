@@ -405,7 +405,7 @@ interior
 	}
      
       scale 1
-      translate -(clock*(seconds))*z*.2
+      translate -(clock*(seconds/4))*z*.2
      }
    }  
    
