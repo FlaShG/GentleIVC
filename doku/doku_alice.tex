@@ -38,7 +38,22 @@ Man übergibt zwei Objekte und eine Textur. Das Makro bildet damit den "Merge" d
 Die Überschneidung allerdings wird mit der Übergebenen Textur eingefärbt, sodass als Resultat das Objekt A entsteht, das jedoch am Schnittvolumen mit Objekt B eine neue Textur erhalten hat.
 
 \subsection{Tiefenunschärfe}
-\subsection{Der Gentleman und gentle.inc} %nach oben verschoben, damit alice.inc die fliege referenzieren kann
+Tiefenunschärfe ist ein in POV-Ray sehr einfach zu verwendendes Mittel, um den Fokus des Betrachters zu lenken.
+Die Möglichkeit, auf dem Rechencluster des Informatikums rendern zu können, hat es uns erlaubt, jede Szene trotz des gesteigerten Renderaufwands in endlicher Zeit mit Tiefenunschärfe in einer akzeptablen Qualität zu rendern.
+Wichtig war hierbei neben dem kalkulierten Setzen des Fokuspunktes die Anpassung der Linsengröße.
+In der Mitte des Films findet ein Szenenwechsel vom Wald in die Taschenuhr statt.
+Die beiden Charaktere haben danach nur noch einen Bruchteil ihrer ursprünglichen Größe. Damit diese Änderung deutlich wird, muss die Linse der Kamera ebenfalls kleiner werden.
+Lediglich in der Szene, in der man über die Schulter des Gentleman hinweg Alice erblickt, wurde die Linsengröße zwecks Verstärkung des Effekts wieder stark vergrößert.
+
+\subsection{Die gentle.inc-Datei} %nach oben verschoben, damit alice.inc die fliege referenzieren kann
+Die gentle.inc-Datei beinhaltet den Gentleman und alles, was ihn ausmacht. Dazu gehören auch Objekte wie der Schnurrbart, der für die Pilze erneut verwendet wurde.
+Zu finden sind Definitionen für den Schnurrbart, das Monokel, den Zylinder sowie Kopf und Körper des Gentleman.
+
+Der Schnurrbart besteht aus zwei gespiegelten Hälften, die mit jeweils einem Blob erstellt werden.
+Der "Blob-Inhalt" wiederum wird durch das iterative Platzieren von Kugeln auf einem Spline erzeugt.
+Die Größe der Kugeln wird nach außen hin immer kleiner.
+
+Der Zylinder ist eine simple Kombination aus zwei (geometrischen) Zylindern, dessen Kolorierung durch Verwendung des colorize\_intersection-Makros Gebrauch macht.
 
 \subsection{Alice}
 Alice ist eine prinzipiell sehr einfache Figur. Sie hat eine einfarbige Kugel als Kopf, der auf einem zweifarbigen Kegel sitzt, der ihr Kleid darstellt.
@@ -63,6 +78,8 @@ Diese werden auf den Ober- und den Unterarm angewandt. Die Länge des Armes wird
 Bei der Berechung der drei Punkte aus den zwei Winkeln nutzten wir die vrotate-Funktion.
 
 Die beiden Makros zusammen ermöglichten es uns, einen Arm über einen Spline zu realisieren, der einen vernünftig anmutenden Ellenbogen darstellt, sich aber genau wie die Lösung mit z.B. zwei Zylindern als Arm durch Verwendung zweier Rotationen steuern lässt.
+Über diesen Spline iteriert das erste Makro mit einer Schleife, die in sehr kleinen Abständen Kugeln auf dem Spline platziert, die dem Arm seine Form geben.
+Die Größe der Kugeln wird in Abhängigkeit von der Position auf dem Spline gesetzt, damit z.B. der Unterarm zum Handgelenk hin kontinuierlich dünner wird.
 
 \section{Szenen 1-10: Der Pilzwald}
 \subsection{Die Pilzwald-Umgebung}
