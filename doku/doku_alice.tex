@@ -32,9 +32,34 @@
 \section{Einführung}
 
 \section{Allgemeines}
+\subsection{Das colorize\_intersection-Makro}
+
 \subsection{Tiefenunschärfe}
+\subsection{Der Gentleman und gentle.inc} %nach oben verschoben, damit alice.inc die fliege referenzieren kann
+
 \subsection{Alice}
-\subsection{Der Gentleman und gentle.inc}
+Alice ist eine prinzipiell sehr einfache Figur. Sie hat eine einfarbige Kugel als Kopf, der auf einem zweifarbigen Kegel sitzt, der ihr Kleid darstellt.
+Ihre Frisur ist ein aus drei deformierten Kugeln bestehender Blob, der den Eindruck einer halboffenen Steckfrisur vermittelt.
+Als Detail trägt sie eine Schleife auf dem Hinterkopf. Hier haben wir erneute Verwendung für die in gentle.inc definierte Fliege gefunden.
+Das Kleid erhält seine Zweifarbigkeit durch die Verwendung des colorize\_intersection-Makros.
+
+Die größte Herausforderung der Figur waren die Arme.
+Eine einfache Aneinandersetzung von Unter- und Oberarm ist in POV-Ray sehr einfach zu realisieren, erzeugt aber den Eindruck eines Roboters oder Strichmännchens.
+Bei echten Armen findet eine Verformung des ellenbogens statt, wann immer der Unterarm sich relativ zum Oberarm dreht.
+Diesen Umstand wollten wir zum Wohle einer realistischeren Animation bei der Erstellung der Arme implementieren.
+
+Der erste Schritt war die Erstellung eines Makros, das drei Vektoren als Parameter erwartet: Die Position der Schulter, des Ellenbogens und der Hand.
+Das Makro erstellt einen Spline mit effektiv sieben Punkten.
+Die primären Punkte sind dabei die drei übergebenen Positionen, zwischen zweien davon liegen jeweils zwei Punkte als Tangenten, deren Position sich durch lineare Interpolation zwischen den Primärpunkten ergibt. Es liegt jeweils ein Punkt nah an der einen Seite und einer nah ander anderen.
+Gerade die beiden Tangenten nahe des Ellenbogens sorgen so dafür, dass die Arme nicht gebogen sind. Dass diese Punkte allerdings einen gewissen Abstand zum Primärpunkt haben, bewirkt in Kombination mit der natural\_spline-Einstellung, dass eine kleine Kurve an der Stelle des Ellenbogens entsteht.
+
+Zwei weitere Punkte am Anfang und am Ende haben die gleichen Positionen wir ihre Nachbarn, da natural\_spline die beiden äußeren Punkte der Liste als Tangenten beansprucht. %FIXME: Stimmt das?
+
+Ein weiteres Makro nun nutzt das erste und gibt dem Benutzer die Restriktion, anstatt der drei Punkte nur noch die Schulterpositiom und zwei Rotationen zu übergeben.
+Diese werden auf den Ober- und den Unterarm angewandt. Die Länge des Armes wird allerdings durch das Makro gesetzt.
+Bei der Berechung der drei Punkte aus den zwei Winkeln nutzten wir die vrotate-Funktion.
+
+Die beiden Makros zusammen ermöglichten es uns, einen Arm über einen Spline zu realisieren, der einen vernünftig anmutenden Ellenbogen darstellt, sich aber genau wie die Lösung mit z.B. zwei Zylindern als Arm durch Verwendung zweier Rotationen steuern lässt.
 
 \section{Szenen 1-10: Der Pilzwald}
 \subsection{Die Pilzwald-Umgebung}
