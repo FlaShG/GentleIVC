@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.12.17)  29 JAN 2013 17:12
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.12.17)  29 JAN 2013 17:21
 entering extended mode
 **E:/Projekte/IVC/GentleIVC/doku/doku_alice.tex
 (E:/Projekte/IVC/GentleIVC/doku/doku_alice.tex
@@ -385,19 +385,39 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 91--91
+Underfull \hbox (badness 10000) in paragraph at lines 89--92
+[]\OT1/cmr/m/n/10 Diese Ma-kros wer-den in ei-ner zwei-di-
+ []
+
+
+Underfull \hbox (badness 7944) in paragraph at lines 89--92
+\OT1/cmr/m/n/10 men-sio-na-len Schlei-fe ver-wen-det, um einen
+ []
+
+
+Underfull \hbox (badness 2512) in paragraph at lines 89--92
+\OT1/cmr/m/n/10 Aufwands ei-ner groen Pilz-men-ge er-son-nen,
+ []
+
+
+Underfull \hbox (badness 3039) in paragraph at lines 89--92
+\OT1/cmr/m/n/10 nicht ne-benl[]aufig, so-dass das Re-chenklu-ster
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--98
 []\OT1/cmr/bx/n/12 Die Riesen-Pilzwald-
  []
 
 [2] (E:\Projekte\IVC\GentleIVC\doku\doku_alice.aux) ) 
 Here is how much of TeX's memory you used:
- 1474 strings out of 494045
- 18616 string characters out of 3145965
- 81697 words of memory out of 3000000
- 4787 multiletter control sequences out of 15000+200000
+ 1476 strings out of 494045
+ 18644 string characters out of 3145965
+ 82697 words of memory out of 3000000
+ 4789 multiletter control sequences out of 15000+200000
  7281 words of font info for 26 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 27i,10n,43p,366b,277s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,10n,43p,382b,277s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX
@@ -407,7 +427,7 @@ onts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb>
-Output written on doku_alice.pdf (2 pages, 107624 bytes).
+Output written on doku_alice.pdf (2 pages, 109433 bytes).
 PDF statistics:
  41 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

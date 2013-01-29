@@ -83,6 +83,13 @@ Die Größe der Kugeln wird in Abhängigkeit von der Position auf dem Spline ges
 
 \section{Szenen 1-10: Der Pilzwald}
 \subsection{Die Pilzwald-Umgebung}
+Die Pilze in unserem Film sind als Makro realisiert, das einen Pilz mit variabler Höhe, Kopfradius, Drehung, Kopftextur und Stielscherung erzeugt. Zusätzlich erlaubt es der Parameter "gentle", anzugeben, ob der Pilz über einen enormen Schnurrbart zu verfügen hat.
+Eine spätere Variante des Makros ermöglicht es zudem, eine explizite Drehung des Kopfes anzugeben. Dies haben wir für die Alice ansehenden Pilze in den Wanderszenen verwendet.
+
+Diese Makros werden in einer zweidimensionalen Schleife verwendet, um einen flächendeckenden Pilzwald zu erzeugen.
+In der shroomforest.inc-Datei gibt es ein Makro zum Erzeugen eines 60x60-Feldes, welches für Szenen innerhalb des Waldes ausreicht, und eines zum Aufstocken dieses Waldes auf 110x110 Pilze. Letzteres findet z.B. in der Anfangsszene, in der Alice den Wald überblickt, Verwendung.
+Die Unterteilung in den großen und den kleinen Wald haben wir aufgrund des enormen Parsing-Aufwands einer großen Pilzmenge ersonnen, denn das Parsen der Objekte functioniert in POV-Ray im Gegensatz zum Rendern leider nicht nebenläufig, sodass das Rechenkluster des Informatikums keine Vorteile beim Parsen generieren kann.
+
 \subsection{Die ChesSir-Cat}
 
 \section{Szenen 11-20: Die Taschenuhr}
