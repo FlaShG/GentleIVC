@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1.25in]{geometry}
 \usepackage{fancyhdr}
+\usepackage{url}
 
 \author{Sascha Graeff, Max Menzel, Mario Mohr}
 \title{Alice \\ \small Projektdokumentation \\ Interactive Visual Computing \\ WiSe 2012/13}
@@ -32,6 +33,26 @@
 \section{Einführung}
 
 \section{Allgemeines}
+\subsection{Das Rendern (auf dem Cluster)} % habe erstmal nach vorne gepackt, damit es nicht zwischen dem ganzen povray Code steht
+Um den POV-Ray-Code schnell rendern zu können haben wir das \textit{ccblade}-Rechencluster der Informatikums verwendet, dieses umfasst 11 Blade-Systemen, von denen allerdings meist nur 10 verfügbar waren.
+Seit \textit{Povray 3.7} ist der Code multithreadfähig, wodurch ein Rendervorgang eine Blade füllen kann. Dies gilt allerdings nur für den Rendervorgang und nicht für das Parsen der Codedatei, denn das ist immer noch singlethreaded.
+Da wir den ganzen Cluster zur Verfügung hatten, konnten wir nicht nur die Parallelität einer Blade ausnutzen, sondern auch gleichzeitig auf den anderen die nächsten Bilder rendern. 
+
+Um POV-Ray auf den Blades zum Laufen zu bringen, mussten wir uns erstmal mit den Kommandozeilenparametern auseinandersetzten. Auf der POV-Ray Dokumentationsseite gibt es leider keine aggregierte Übersicht über alle Parameter sondern sind nur in den Unterkapiteln der entsprechenden Themen. Eine gut aber nicht vollständig Liste kann unter \footnote{\label{foot:cmdLink}\url{http://library.thinkquest.org/3285/language/cmdln.html}} gefunden werden. Die wichtigsten sind:
+\begin{description}
+\item[+Hn +Wm] $n\times{}m$-Auflösung
+\item[+A -A]Antialiasing an/ausschalten
+\item[+Qn] Qualität auf $n = (0 .. 9)$ setzen
+\item[+KFIn +KFFm] Frame n bis m definieren
+\item[+SFn +EFm] von Frame n bis m rendern 
+\end{description}
+Somit sah ein Aufruf so aus:  povray foo.pov  [options]
+
+Wollten wir nun z.B. eine Szene mit 240 Frames rendern, mussten wir einfach \textit{+KFI1} und \textit{+KFF240} setzten und bei 10 Knoten mit \textit{+SFn} und \textit{+EFm} in 24er Teile zerlegen.
+ 
+
+Um den letzten Rest Performance herauszuholen, haben wir bei einigen Szenen mit langen Parse-Zeiten (mehrere Minuten) auf einem Knoten zweimal POV-Ray so ausgeführt, dass während der Parse-Zeit des einen (ein Thread) der andere gerendert hat (die restlichen Threads).
+
 \subsection{Das colorize\_intersection-Makro}
 Das colorize\_intersection-Makro ist ein sehr simples Makro, dass es uns erlaubt hat, Objekte über csg-Intersections einzufärben.
 Man übergibt zwei Objekte und eine Textur. Das Makro bildet damit den "Merge" der Differenz $A - B$ und der Überschneidung $A \cap B$ der beiden Objekte.
@@ -99,7 +120,7 @@ MARIO KNOWS ALL ABOUT IT!
 
 Die Taschenuhr lässt sich in Rahmen, Ziffernblatt, Glas und Zeiger zerlegen.
 
-Der Rahmen besteht lediglich auch einem Torus und einem Zylinder; der Griff aus 4 Tori und einem abgerundeten Cylinder.
+Der Rahmen besteht lediglich auch einem Torus und einem Zylinder; der Griff aus 4 Tori und einem abgerundeten Zylinder.
 Das Innerer der Uhr wird durch einen Zylinder beschrieben, der beim Zusammensetzten der Uhr aus dem Rahmen herausgeschnitten wird.
 
 Das Glas ist eine simple Intersection aus einem Zylinder und einer Sphäre, wodurch eine (mono) konvexe Linse erzeugt wird.
