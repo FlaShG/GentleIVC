@@ -29,10 +29,11 @@
 
 \abstract{In diesem Paper beschreiben wir die in unserem Kurzfilm 'Alice' verwendeten Konzepte und Werkzeuge.}
 
-
-\section{Einführung}
+\tableofcontents
 
 \section{Allgemeines}
+In diesem Kapitel stellen wir die im ganzen Projekt verwendeten Werkzeuge vor.
+
 \subsection{Das Rendern (auf dem Cluster)} % habe erstmal nach vorne gepackt, damit es nicht zwischen dem ganzen povray Code steht
 Um den POV-Ray-Code schnell rendern zu können haben wir das \textit{ccblade}-Rechencluster der Informatikums verwendet, dieses umfasst 11 Blade-Systemen, von denen allerdings meist nur 10 verfügbar waren.
 Seit \textit{Povray 3.7} ist der Code multithreadfähig, wodurch ein Rendervorgang eine Blade füllen kann. Dies gilt allerdings nur für den Rendervorgang und nicht für das Parsen der Codedatei, denn das ist immer noch singlethreaded.
@@ -63,6 +64,7 @@ Tiefenunschärfe ist ein in POV-Ray sehr einfach zu verwendendes Mittel, um den 
 Die Möglichkeit, auf dem Rechencluster des Informatikums rendern zu können, hat es uns erlaubt, jede Szene trotz des gesteigerten Renderaufwands in endlicher Zeit mit Tiefenunschärfe in einer akzeptablen Qualität zu rendern.
 Wichtig war hierbei neben dem kalkulierten Setzen des Fokuspunktes die Anpassung der Linsengröße.
 In der Mitte des Films findet ein Szenenwechsel vom Wald in die Taschenuhr statt.
+
 Die beiden Charaktere haben danach nur noch einen Bruchteil ihrer ursprünglichen Größe. Damit diese Änderung deutlich wird, muss die Linse der Kamera ebenfalls kleiner werden.
 Lediglich in der Szene, in der man über die Schulter des Gentleman hinweg Alice erblickt, wurde die Linsengröße zwecks Verstärkung des Effekts wieder stark vergrößert.
 
@@ -84,12 +86,14 @@ Das Kleid erhält seine Zweifarbigkeit durch die Verwendung des colorize\_inters
 
 Die größte Herausforderung der Figur waren die Arme.
 Eine einfache Aneinandersetzung von Unter- und Oberarm ist in POV-Ray sehr einfach zu realisieren, erzeugt aber den Eindruck eines Roboters oder Strichmännchens.
+
 Bei echten Armen findet eine Verformung des ellenbogens statt, wann immer der Unterarm sich relativ zum Oberarm dreht.
 Diesen Umstand wollten wir zum Wohle einer realistischeren Animation bei der Erstellung der Arme implementieren.
 
 Der erste Schritt war die Erstellung eines Makros, das drei Vektoren als Parameter erwartet: Die Position der Schulter, des Ellenbogens und der Hand.
 Das Makro erstellt einen Spline mit effektiv sieben Punkten.
 Die primären Punkte sind dabei die drei übergebenen Positionen, zwischen zweien davon liegen jeweils zwei Punkte als Tangenten, deren Position sich durch lineare Interpolation zwischen den Primärpunkten ergibt. Es liegt jeweils ein Punkt nah an der einen Seite und einer nah ander anderen.
+
 Gerade die beiden Tangenten nahe des Ellenbogens sorgen so dafür, dass die Arme nicht gebogen sind. Dass diese Punkte allerdings einen gewissen Abstand zum Primärpunkt haben, bewirkt in Kombination mit der natural\_spline-Einstellung, dass eine kleine Kurve an der Stelle des Ellenbogens entsteht.
 
 Zwei weitere Punkte am Anfang und am Ende haben die gleichen Positionen wir ihre Nachbarn, da natural\_spline die beiden äußeren Punkte der Liste als Tangenten beansprucht. %FIXME: Stimmt das?
@@ -103,21 +107,30 @@ Die beiden Makros zusammen ermöglichten es uns, einen Arm über einen Spline zu
 Die Größe der Kugeln wird in Abhängigkeit von der Position auf dem Spline gesetzt, damit z.B. der Unterarm zum Handgelenk hin kontinuierlich dünner wird.
 
 \section{Szenen 1-10: Der Pilzwald}
+In diesem Kapitel stellen wir die in der ersten Hälfte des Filmes, dem Riesenpilz-Wald, verwendeten Werkzeuge vor.
+
 \subsection{Die Pilzwald-Umgebung}
-Die Pilze in unserem Film sind als Makro realisiert, das einen Pilz mit variabler Höhe, Kopfradius, Drehung, Kopftextur und Stielscherung erzeugt. Zusätzlich erlaubt es der Parameter "gentle", anzugeben, ob der Pilz über einen enormen Schnurrbart zu verfügen hat.
+Die Pilze in unserem Film sind als Makro realisiert, das einen Pilz mit variabler Höhe, Kopfradius, Drehung, Kopftextur und Stielscherung erzeugt. Wir erzeugen einzelne Pilze durch die Vereinigung eines gescherten Zylinders als Stiel mit einer Rotationsfigur (surface of rotation, sor) als Über- und einem zurechtgeschnittenen Torus als Unterseite des Pilzkopfes.
+Zusätzlich erlaubt es der Parameter "gentle", anzugeben, ob der Pilz über einen enormen Schnurrbart zu verfügen hat.
 Eine spätere Variante des Makros ermöglicht es zudem, eine explizite Drehung des Kopfes anzugeben. Dies haben wir für die Alice ansehenden Pilze in den Wanderszenen verwendet.
 
-Diese Makros werden in einer zweidimensionalen Schleife verwendet, um einen flächendeckenden Pilzwald zu erzeugen.
+Diese Makros werden in einer zweidimensionalen Schleife verwendet, um einen flächendeckenden Pilzwald zu erzeugen. Die Grundpositionen sind dabei ungefähr in einem quadratischen Gitter angelegt; die Höhen sind gammaverteilt, um einen Wald mit einer breiten Masse an 'durchschnittlich' hohen Pilzen und einigen spürbar höheren Ausreissern zu erzeugen.
+
 In der shroomforest.inc-Datei gibt es ein Makro zum Erzeugen eines 60x60-Feldes, welches für Szenen innerhalb des Waldes ausreicht, und eines zum Aufstocken dieses Waldes auf 110x110 Pilze. Letzteres findet z.B. in der Anfangsszene, in der Alice den Wald überblickt, Verwendung.
 Die Unterteilung in den großen und den kleinen Wald haben wir aufgrund des enormen Parsing-Aufwands einer großen Pilzmenge ersonnen, denn das Parsen der Objekte functioniert in POV-Ray im Gegensatz zum Rendern leider nicht nebenläufig, sodass das Rechenkluster des Informatikums keine Vorteile beim Parsen generieren kann.
 
 \subsection{Die ChesSir-Cat}
-MARIO KNOWS ALL ABOUT IT!
+
+Eines der interessantesten (und rechenaufwendigsten) Werkzeuge in POV-Ray ist die interior-media-Kombination. Das interior-Schlüsselwort wird verwendet, um dem inneren von (meist hohlen) Objekten spezielle Eigenschaften zu verleihen. Eine dieser Eigenschaften ist das Enthalten eines Systems von Partikeln, deklariert durch das media-Schlüsselwort. Diese Partikel verhalten sich - in bestimmten Grenzen - wie 'echte' Objekte bezüglich Lichtbrechung, -färbung etc. Die Partikelverteilung und -dichte folgt dabei einem oder mehreren 'density'-statements; das enthaltende Objekt dient dabei als natürliche Begrenzung der Partikelverteilung.
+
+Ein einfaches Beispiel für die Verwendung von media bzw. density ist eine primitive Wolke, dargestellt als Kugelförmiges Partikelsystem mit weiß-gräulicher Lichtfärbung begrenzt durch einen ellipsoiden Körper.
+
+Wir verwenden zwei Partikelsysteme zur Darstellung der ChesSir-Cat: erstens ein schwarzes, verhältnismäßig grobes mit Granit-Störung begrenzt durch die Kopfform der Katze (ein Ellipsoid, vereinigt mit einem zurechtgeschnittenen [conesweep] als Ohren) und ein grünes, feiner gemustertes und ebenfalls granit-gestörtes zur Darstellung der Augen. Zur 'Animierung' des so erzeugten Rauches werden beide Partikelsysteme langsam mit der Zeit um die relative z-Achse verschoben. Die Pupillen werden durch einfaches Schneiden von je vier Kugeln erzeugt; darüberhinaus befinden sich zwei grüne Lichtquellen mit starkem fade-Faktor (d.h., mit mit wachsender Entfernung stark schwindender Leuchtweite) in den Augen.
 
 \section{Szenen 11-20: Die Taschenuhr}
+In diesem Kapitel beschreiben wir die in der zweiten Hälfte des Filmes, Alice in der Taschenuhr, verwendeten Werkzeuge vor.
+
 \subsection{Die Taschenuhr}
-
-
 Die Taschenuhr lässt sich in Rahmen, Ziffernblatt, Glas und Zeiger zerlegen.
 
 Der Rahmen besteht lediglich auch einem Torus und einem Zylinder; der Griff aus 4 Tori und einem abgerundeten Zylinder.
@@ -137,13 +150,16 @@ Beim Zusammenfügen der Uhr kann man auch die Uhrzeit angeben, dabei werde Stund
 \subsection{Die Teaparty}
 Die Teaparty ist eine sehr einfache Szene, die durch die Taschenuhr als Umgebung ihre Einzigartigkeit erhält.
 Gerade der spiegelnde Boden ist wichtig dafür, dass die Szene nicht als leer empfunden wird.
+
 Denn effektiv besteht die Szene nur aus ihren Darstellern, einem Tisch, zwei sehr simplen Stühlen, zwei Teetassen und einer Teekanne.
 
 Die Teekanne ist eine aus dem Netz übernommene POV-Ray-Variante des berühmten "Utah Teapot", dessen Bedeutung in der 3D-Welt in Kombination mit dem äußerst passenden Kontext uns gerade dazu nötigte, sie an dieser Stelle zu verwenden.
 Die Teetassen dagegen sind eine eigene Kreation, bei der wir vom Surface Of Revolution gebraucht machten. Mit diesem war es neben der eleganten Darstellung einer Teetasse noch möglich, den darin enthaltenen Tee beliebig anzupassen, sodass z.B. die Oberfläche der Flüssigkeit in Abhängigkeit des Winkels der Tasse neigbar gewesen wäre.
+
 Von dieser Möglichkeit haben wir aufgrund von verschiedenen Erwägungen keinen Gebraucht gemacht.
 
-\subsection{Die Riesen-Pilzwald-Umgebung}
-Sascha versteht den Unterschied zwischen dieser Sektion und 3.1 nicht.
+
+\subsection{Die Taschenuhr-Pilzwald-Umgebung}
+Um den durch das Glas der Taschenuhr sichtbaren Teil des Pilzwaldes darzustellen, verwenden wir ein sorgfältig plaziertes und stark vergrößertes 5x5-Feld der in Kapitel 3 vorgestellten Pilze.
 
 \end{document}
