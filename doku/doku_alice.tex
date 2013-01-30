@@ -87,20 +87,20 @@ Das Kleid erhält seine Zweifarbigkeit durch die Verwendung des colorize\_inters
 Die größte Herausforderung der Figur waren die Arme.
 Eine einfache Aneinandersetzung von Unter- und Oberarm ist in POV-Ray sehr einfach zu realisieren, erzeugt aber den Eindruck eines Roboters oder Strichmännchens.
 
-Bei echten Armen findet eine Verformung des ellenbogens statt, wann immer der Unterarm sich relativ zum Oberarm dreht.
+Bei echten Armen findet eine Verformung des Ellenbogens statt, wann immer der Unterarm sich relativ zum Oberarm dreht.
 Diesen Umstand wollten wir zum Wohle einer realistischeren Animation bei der Erstellung der Arme implementieren.
 
 Der erste Schritt war die Erstellung eines Makros, das drei Vektoren als Parameter erwartet: Die Position der Schulter, des Ellenbogens und der Hand.
 Das Makro erstellt einen Spline mit effektiv sieben Punkten.
-Die primären Punkte sind dabei die drei übergebenen Positionen, zwischen zweien davon liegen jeweils zwei Punkte als Tangenten, deren Position sich durch lineare Interpolation zwischen den Primärpunkten ergibt. Es liegt jeweils ein Punkt nah an der einen Seite und einer nah ander anderen.
+Die primären Punkte sind dabei die drei übergebenen Positionen, zwischen zweien davon liegen jeweils zwei Punkte als Tangenten, deren Position sich durch lineare Interpolation zwischen den Primärpunkten ergibt. Es liegt jeweils ein Punkt nah an der einen Seite und einer nah an der anderen.
 
 Gerade die beiden Tangenten nahe des Ellenbogens sorgen so dafür, dass die Arme nicht gebogen sind. Dass diese Punkte allerdings einen gewissen Abstand zum Primärpunkt haben, bewirkt in Kombination mit der natural\_spline-Einstellung, dass eine kleine Kurve an der Stelle des Ellenbogens entsteht.
 
 Zwei weitere Punkte am Anfang und am Ende haben die gleichen Positionen wir ihre Nachbarn, da natural\_spline die beiden äußeren Punkte der Liste als Tangenten beansprucht. %FIXME: Stimmt das?
 
-Ein weiteres Makro nun nutzt das erste und gibt dem Benutzer die Restriktion, anstatt der drei Punkte nur noch die Schulterpositiom und zwei Rotationen zu übergeben.
+Ein weiteres Makro nun nutzt das erste und gibt dem Benutzer die Restriktion, anstatt der drei Punkte nur noch die Schulterposition und zwei Rotationen zu übergeben.
 Diese werden auf den Ober- und den Unterarm angewandt. Die Länge des Armes wird allerdings durch das Makro gesetzt.
-Bei der Berechung der drei Punkte aus den zwei Winkeln nutzten wir die vrotate-Funktion.
+Bei der Berechnung der drei Punkte aus den zwei Winkeln nutzten wir die vrotate-Funktion.
 
 Die beiden Makros zusammen ermöglichten es uns, einen Arm über einen Spline zu realisieren, der einen vernünftig anmutenden Ellenbogen darstellt, sich aber genau wie die Lösung mit z.B. zwei Zylindern als Arm durch Verwendung zweier Rotationen steuern lässt.
 Über diesen Spline iteriert das erste Makro mit einer Schleife, die in sehr kleinen Abständen Kugeln auf dem Spline platziert, die dem Arm seine Form geben.
@@ -121,11 +121,11 @@ Die Unterteilung in den großen und den kleinen Wald haben wir aufgrund des enor
 
 \subsection{Die ChesSir-Cat}
 
-Eines der interessantesten (und rechenaufwendigsten) Werkzeuge in POV-Ray ist die interior-media-Kombination. Das interior-Schlüsselwort wird verwendet, um dem inneren von (meist hohlen) Objekten spezielle Eigenschaften zu verleihen. Eine dieser Eigenschaften ist das Enthalten eines Systems von Partikeln, deklariert durch das media-Schlüsselwort. Diese Partikel verhalten sich - in bestimmten Grenzen - wie 'echte' Objekte bezüglich Lichtbrechung, -färbung etc. Die Partikelverteilung und -dichte folgt dabei einem oder mehreren 'density'-statements; das enthaltende Objekt dient dabei als natürliche Begrenzung der Partikelverteilung.
+Eines der interessantesten (und rechenaufwendigsten) Werkzeuge in POV-Ray ist die interior-media-Kombination. Das interior-Schlüsselwort wird verwendet, um dem Inneren von (meist hohlen) Objekten spezielle Eigenschaften zu verleihen. Eine dieser Eigenschaften ist das Enthalten eines Systems von Partikeln, deklariert durch das media-Schlüsselwort. Diese Partikel verhalten sich - in bestimmten Grenzen - wie 'echte' Objekte bezüglich Lichtbrechung, -färbung etc. Die Partikelverteilung und -dichte folgt dabei einem oder mehreren 'density'-statements; das enthaltende Objekt dient dabei als natürliche Begrenzung der Partikelverteilung.
 
-Ein einfaches Beispiel für die Verwendung von media bzw. density ist eine primitive Wolke, dargestellt als Kugelförmiges Partikelsystem mit weiß-gräulicher Lichtfärbung begrenzt durch einen ellipsoiden Körper.
+Ein einfaches Beispiel für die Verwendung von media bzw. density ist eine primitive Wolke, dargestellt als kugelförmiges Partikelsystem mit weiß-gräulicher Lichtfärbung begrenzt durch einen ellipsoiden Körper.
 
-Wir verwenden zwei Partikelsysteme zur Darstellung der ChesSir-Cat: erstens ein schwarzes, verhältnismäßig grobes mit Granit-Störung begrenzt durch die Kopfform der Katze (ein Ellipsoid, vereinigt mit einem zurechtgeschnittenen [conesweep] als Ohren) und ein grünes, feiner gemustertes und ebenfalls granit-gestörtes zur Darstellung der Augen. Zur 'Animierung' des so erzeugten Rauches werden beide Partikelsysteme langsam mit der Zeit um die relative z-Achse verschoben. Die Pupillen werden durch einfaches Schneiden von je vier Kugeln erzeugt; darüberhinaus befinden sich zwei grüne Lichtquellen mit starkem fade-Faktor (d.h., mit mit wachsender Entfernung stark schwindender Leuchtweite) in den Augen.
+Wir verwenden zwei Partikelsysteme zur Darstellung der ChesSir-Cat: erstens ein schwarzes, verhältnismäßig grobes mit Granit-Störung begrenzt durch die Kopfform der Katze (ein Ellipsoid, vereinigt mit einem zurechtgeschnittenen [conesweep] als Ohren) und ein grünes, feiner gemustertes und ebenfalls Granit-gestörtes zur Darstellung der Augen. Zur 'Animierung' des so erzeugten Rauches werden beide Partikelsysteme langsam mit der Zeit um die relative z-Achse verschoben. Die Pupillen werden durch einfaches Schneiden von je vier Kugeln erzeugt; darüber hinaus befinden sich zwei grüne Lichtquellen mit starkem fade-Faktor (d.h., mit mit wachsender Entfernung stark schwindender Leuchtweite) in den Augen.
 
 \section{Szenen 11-20: Die Taschenuhr}
 In diesem Kapitel beschreiben wir die in der zweiten Hälfte des Filmes, Alice in der Taschenuhr, verwendeten Werkzeuge vor.
@@ -139,7 +139,7 @@ Das Innerer der Uhr wird durch einen Zylinder beschrieben, der beim Zusammensetz
 Das Glas ist eine simple Intersection aus einem Zylinder und einer Sphäre, wodurch eine (mono) konvexe Linse erzeugt wird.
 Als Material wird  \textit{M\_Glass} aus \textit{glass.inc} verwendet.
 
-Die Zeiger bestehen 2 Zylindern in einem Blob, wobei der Sekundenzeiger noch einen Torus besitzt.
+Die Zeiger bestehen 2 Zylindern in einem Blob, wobei der Sekundenzeiger noch einen zusätzlichen Torus besitzt.
 
 Das Ziffernblatt selbst ist nur ein Zylinder. Die Zeichen auf diesem werden über ein Makro (\textit{writeNumbersToFace}) gesetzt:
 Es nimmt eine Array aus (UTF8-)Zeichen, die Schriftart sowie den Radius von Zeichenmitte bis zu Null an. Des weiteren wird die Skalierung, das Material, eine initiale Drehung und ein Flag, der bestimmt, ob die Untere Kante jedes Zeichens auf die Null oder zur xz-Ebene ausgerichtet ist, angenommen. Um den Abstand von der Mitte des Zeichens zur Null zu bestimmen, wird \textit{min\_extent} und \textit{max\_extent} verwendet. Auf dem Kreis werden nun die Zeichen gleichmäßig verteilt (dabei ist es egal wie viele Zeichen in dem Array enthalten sind). Da es sich um UTF8-Zeichen handelt kann man beliebige Zeichen einfüge: Seien es die arabischen Zahlen 1 bis 12 oder  ''O", ''S", "W", "N'' oder römische Zahlen.
@@ -160,6 +160,6 @@ Von dieser Möglichkeit haben wir aufgrund von verschiedenen Erwägungen keinen 
 
 
 \subsection{Die Taschenuhr-Pilzwald-Umgebung}
-Um den durch das Glas der Taschenuhr sichtbaren Teil des Pilzwaldes darzustellen, verwenden wir ein sorgfältig plaziertes und stark vergrößertes 5x5-Feld der in Kapitel 3 vorgestellten Pilze.
+Um den durch das Glas der Taschenuhr sichtbaren Teil des Pilzwaldes darzustellen, verwenden wir ein sorgfältig platziertes und stark vergrößertes 5x5-Feld der in Kapitel 3 vorgestellten Pilze.
 
 \end{document}
